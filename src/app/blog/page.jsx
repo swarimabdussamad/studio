@@ -5,8 +5,8 @@ const BlogPage = () => {
     <>
       <PageIntro eyebrow="Blog" title="The latest articles and news">
         <p>
-          Stay up-to-date with the latest industry news as our marketing teams
-          finds new ways to re-purpose old CSS tricks articles.
+          Empowering businesses through automation and technology. Discover insights, 
+          strategies, and innovations that drive efficiency and growth.
         </p>
       </PageIntro>
     </>
