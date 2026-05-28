@@ -2,28 +2,19 @@ import { SocialMediaProfiles } from "@/components/SocialMedia";
 
 export const navigation = [
   {
-    title: "Work",
+    title: "Content",
     links: [
-      { title: "AH MANA3RAF", href: "/work/amazonclone" },
-      { title: "AH MANA3RAF", href: "/work/bazar" },
-      { title: "AH MANA3RAF", href: "/work/blog101" },
-      {
-        title: (
-          <>
-            See all <span aria-hidden="true">&rarr;</span>
-          </>
-        ),
-        href: "/work",
-      },
+      { title: "Blog", href: "/blog" },
+      { title: "Labs", href: "/labs" },
+      { title: "Build Logs", href: "/blog" },
+      { title: "About", href: "/about" },
     ],
   },
   {
-    title: "Company",
+    title: "Projects",
     links: [
-      { title: "About", href: "/about" },
-      { title: "Process", href: "/process" },
-      { title: "Blog", href: "/blog" },
-      { title: "Contact us", href: "/contact" },
+      { title: "Apps", href: "/apps" },
+      { title: "AutoWaba", href: "/apps" },
     ],
   },
   {

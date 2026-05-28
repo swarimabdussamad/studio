@@ -3,8 +3,13 @@ import "./globals.css";
 
 export const metadata = {
   title: {
-    template: "Abdullah",
-    default: "Abdullah",
+    template: "%s | AutoTechify",
+    default: "AutoTechify — Building production systems in public",
+  },
+  description:
+    "A developer documenting real IT environments and building automation software publicly.",
+  icons: {
+    icon: "/tortoise-logo.svg",
   },
 };
 

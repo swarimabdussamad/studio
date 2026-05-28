@@ -9,7 +9,6 @@ import { HiMenuAlt4 } from "react-icons/hi";
 import { IoMdClose } from "react-icons/io";
 import Button from "./Button";
 import clsx from "clsx";
-import Offices from "./Offices";
 import SocialMedia from "./SocialMedia";
 import Footer from "./Footer";
 
@@ -21,17 +20,15 @@ const Header = ({
   onToggle,
   toggleRef,
 }) => {
-  // Container
   return (
     <Container>
       <div className="flex items-center justify-between">
-        {/* Logo */}
-        <Link href={"/"} aria-label="Home">
-          <Logo invert={invert}>TechAutomate</Logo>
+        <Link href="/" aria-label="Home">
+          <Logo invert={invert}>AutoTechify</Logo>
         </Link>
         <div className="flex items-center gap-x-8">
-          <Button href={"/contact"} invert={invert}>
-            Contact us
+          <Button href="/contact" invert={invert}>
+            Say hello
           </Button>
           <button
             ref={toggleRef}
@@ -59,6 +56,7 @@ const Header = ({
     </Container>
   );
 };
+
 const NavigationRow = ({ children }) => {
   return (
     <div className="even:mt-px sm:bg-neutral-950">
@@ -85,12 +83,12 @@ const Navigation = () => {
   return (
     <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
       <NavigationRow>
-        <NavigationItem href="/work">Our Work</NavigationItem>
-        <NavigationItem href="/about">About Us</NavigationItem>
+        <NavigationItem href="/blog">Blog</NavigationItem>
+        <NavigationItem href="/apps">Apps</NavigationItem>
       </NavigationRow>
       <NavigationRow>
-        <NavigationItem href="/process">Our Process</NavigationItem>
-        <NavigationItem href="/blog">Blog</NavigationItem>
+        <NavigationItem href="/labs">Labs</NavigationItem>
+        <NavigationItem href="/about">About</NavigationItem>
       </NavigationRow>
     </nav>
   );
@@ -103,6 +101,7 @@ const RootLayoutInner = ({ children }) => {
   const closeRef = useRef();
   const navRef = useRef();
   const shouldReduceMotion = useReducedMotion();
+
   useEffect(() => {
     function onClick(event) {
       if (event.target.closest("a")?.href === window.location.href) {
@@ -110,11 +109,9 @@ const RootLayoutInner = ({ children }) => {
       }
     }
     window.addEventListener("click", onClick);
-
-    return () => {
-      window.removeEventListener("click", onClick);
-    };
+    return () => window.removeEventListener("click", onClick);
   }, []);
+
   return (
     <MotionConfig transition={shouldReduceMotion ? { duration: 0 } : undefined}>
       <header>
@@ -123,7 +120,6 @@ const RootLayoutInner = ({ children }) => {
           aria-hidden={expanded ? "true" : undefined}
           inert={expanded ? "" : undefined}
         >
-          {/* Header */}
           <Header
             panelId={panelId}
             icon={HiMenuAlt4}
@@ -161,26 +157,14 @@ const RootLayoutInner = ({ children }) => {
                 }}
               />
             </div>
-            {/* Navigation */}
             <Navigation />
             <div className="relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800">
               <Container>
-                <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
-                  <div>
-                    <h2 className="font-display text-base font-semibold text-white">
-                      Our offices
-                    </h2>
-                    <Offices
-                      invert
-                      className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2"
-                    />
-                  </div>
-                  <div className="sm:border-l sm:border-transparent sm:pl-16">
-                    <h2 className="font-display text-base font-semibold text-white">
-                      Follow us
-                    </h2>
-                    <SocialMedia className="mt-6" invert />
-                  </div>
+                <div className="pb-16 pt-10 sm:pt-16">
+                  <h2 className="font-display text-base font-semibold text-white">
+                    Follow along
+                  </h2>
+                  <SocialMedia className="mt-6" invert />
                 </div>
               </Container>
             </div>
@@ -197,7 +181,6 @@ const RootLayoutInner = ({ children }) => {
           className="relative isolate flex w-full flex-col pt-9"
         >
           <main className="w-full flex-auto">{children}</main>
-          {/* Footer */}
           <Footer />
         </motion.div>
       </motion.div>

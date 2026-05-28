@@ -16,7 +16,7 @@ const Logo = ({ invert, href, className, children, variant = "header", ...props 
       <div className="tortoise-container">
         <Image 
           src="/tortoise-logo.svg" 
-          alt="TechAutomate Logo" 
+          alt="AutoTechify Logo" 
           width={40} 
           height={40}
           className={animationClass}
@@ -29,75 +29,6 @@ const Logo = ({ invert, href, className, children, variant = "header", ...props 
     return (
       <Link href={href} className={className} {...props}>
         {inner}
-        <style jsx global>{`
-          .tortoise-container {
-            position: relative;
-            display: inline-block;
-            z-index: 10;
-          }
-          
-          /* Header Animation - comes from bottom, stops, then goes up and disappears */
-          .tortoise-walk-header {
-            animation: tortoiseHeader 10s ease-in-out infinite;
-          }
-          @keyframes tortoiseHeader {
-            0% {
-              transform: translateY(100px);
-              opacity: 0;
-            }
-            10% {
-              transform: translateY(0px);
-              opacity: 1;
-            }
-            40% {
-              transform: translateY(0px);
-              opacity: 1;
-            }
-            60% {
-              transform: translateY(-120px);
-              opacity: 1;
-            }
-            70% {
-              transform: translateY(-300px);
-              opacity: 1;
-            }
-            72% {
-              transform: translateY(-320px);
-              opacity: 0;
-            }
-            100% {
-              transform: translateY(100px);
-              opacity: 0;
-            }
-          }
-          
-          /* Footer Animation - comes from bottom, stops, stays, then fades out */
-          .tortoise-walk-footer {
-            animation: tortoiseFooter 8s ease-in-out infinite;
-          }
-          @keyframes tortoiseFooter {
-            0% {
-              transform: translateY(100px);
-              opacity: 0;
-            }
-            12.5% {
-              transform: translateY(0px);
-              opacity: 1;
-            }
-            87.5% {
-              transform: translateY(0px);
-              opacity: 1;
-            }
-            90% {
-              transform: translateY(0px);
-              opacity: 0;
-            }
-            100% {
-              transform: translateY(100px);
-              opacity: 0;
-            }
-          }
-        `}</style>
       </Link>
     );
   }
@@ -110,75 +41,6 @@ const Logo = ({ invert, href, className, children, variant = "header", ...props 
       {...props}
     >
       {inner}
-      <style jsx global>{`
-        .tortoise-container {
-          position: relative;
-          display: inline-block;
-          z-index: 10;
-        }
-        
-        /* Header Animation - comes from bottom, stops, then goes up and disappears */
-        .tortoise-walk-header {
-          animation: tortoiseHeader 10s ease-in-out infinite;
-        }
-        @keyframes tortoiseHeader {
-          0% {
-            transform: translateY(100px);
-            opacity: 0;
-          }
-          10% {
-            transform: translateY(0px);
-            opacity: 1;
-          }
-          40% {
-            transform: translateY(0px);
-            opacity: 1;
-          }
-          60% {
-            transform: translateY(-120px);
-            opacity: 1;
-          }
-          70% {
-            transform: translateY(-300px);
-            opacity: 1;
-          }
-          72% {
-            transform: translateY(-320px);
-            opacity: 0;
-          }
-          100% {
-            transform: translateY(100px);
-            opacity: 0;
-          }
-        }
-        
-        /* Footer Animation - comes from bottom, stops, stays, then fades out */
-        .tortoise-walk-footer {
-          animation: tortoiseFooter 8s ease-in-out infinite;
-        }
-        @keyframes tortoiseFooter {
-          0% {
-            transform: translateY(100px);
-            opacity: 0;
-          }
-          12.5% {
-            transform: translateY(0px);
-            opacity: 1;
-          }
-          87.5% {
-            transform: translateY(0px);
-            opacity: 1;
-          }
-          90% {
-            transform: translateY(0px);
-            opacity: 0;
-          }
-          100% {
-            transform: translateY(100px);
-            opacity: 0;
-          }
-        }
-      `}</style>
     </h2>
   );
 };

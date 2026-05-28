@@ -1,6 +1,6 @@
 export function constructMetadata({
-  title = "TechAutomate ",
-  description = "TechAutomate is an open-source website.",
+  title = "AutoTechify",
+  description = "A developer documenting real production systems and building automation software — in public.",
   image = "/agency.PNG",
   icons = "/favicon.ico",
   noIndex = false,
@@ -11,27 +11,20 @@ export function constructMetadata({
     openGraph: {
       title,
       description,
-      images: [
-        {
-          url: image,
-        },
-      ],
+      images: [{ url: image }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
       images: [image],
-      creator: "@KING_IN_JUNGLE",
+      creator: "@swarimabdussamad",
     },
     icons,
-    metadataBase: new URL("https://agency-website-abdullah.vercel.app/"),
-    themeColor: "#FFF",
+    metadataBase: new URL("https://autotechify.com/"),
+    themeColor: "#0a0a0a",
     ...(noIndex && {
-      robots: {
-        index: false,
-        follow: false,
-      },
+      robots: { index: false, follow: false },
     }),
   };
 }

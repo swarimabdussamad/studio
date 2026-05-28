@@ -27,6 +27,9 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# subscriber data — lives on the server, never in git
+/data
+
 # vercel
 .vercel
 

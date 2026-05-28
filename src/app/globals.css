@@ -1,3 +1,33 @@
 @import "./base.css";
 @tailwind components;
 @tailwind utilities;
+
+.tortoise-container {
+  position: relative;
+  display: inline-block;
+  z-index: 10;
+}
+
+.tortoise-walk-header {
+  animation: tortoiseHeader 10s ease-in-out infinite;
+}
+@keyframes tortoiseHeader {
+  0% { transform: translateY(100px); opacity: 0; }
+  10% { transform: translateY(0px); opacity: 1; }
+  40% { transform: translateY(0px); opacity: 1; }
+  60% { transform: translateY(-120px); opacity: 1; }
+  70% { transform: translateY(-300px); opacity: 1; }
+  72% { transform: translateY(-320px); opacity: 0; }
+  100% { transform: translateY(100px); opacity: 0; }
+}
+
+.tortoise-walk-footer {
+  animation: tortoiseFooter 8s ease-in-out infinite;
+}
+@keyframes tortoiseFooter {
+  0% { transform: translateY(100px); opacity: 0; }
+  12.5% { transform: translateY(0px); opacity: 1; }
+  87.5% { transform: translateY(0px); opacity: 1; }
+  90% { transform: translateY(0px); opacity: 0; }
+  100% { transform: translateY(100px); opacity: 0; }
+}
