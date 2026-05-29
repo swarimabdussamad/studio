@@ -9,9 +9,9 @@ const ContactPage = () => {
     <>
       <PageIntro eyebrow="Contact" title="Let’s talk.">
         <p>
-          A question about something I wrote, an idea for a collaboration, or
-          feedback on what I’m building — I read everything. The fastest way to
-          reach me is email.
+          Want automation implemented in your business? Have a question about
+          something I built or wrote? A collaboration idea, or just a hello — I
+          read everything. The fastest way to reach me is email.
         </p>
       </PageIntro>
 

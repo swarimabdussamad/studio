@@ -60,6 +60,7 @@ export async function POST(req) {
         },
       });
 
+      // Notify yourself
       await transporter.sendMail({
         from: `"AutoTechify" <swarimabdussamad@gmail.com>`,
         to: "swarimabdussamad@gmail.com",
@@ -71,6 +72,43 @@ export async function POST(req) {
             <p style="font-size:18px;font-weight:600;color:#0a0a0a;">${email}</p>
             <p style="color:#a3a3a3;font-size:13px;margin-top:24px;">
               Total subscribers: ${subscribers.length}
+            </p>
+          </div>
+        `,
+      });
+
+      // Confirmation email to subscriber
+      await transporter.sendMail({
+        from: `"AutoTechify" <swarimabdussamad@gmail.com>`,
+        to: email,
+        subject: `You're subscribed to AutoTechify`,
+        html: `
+          <div style="font-family:sans-serif;max-width:560px;color:#0a0a0a;line-height:1.7;">
+            <h2 style="margin-bottom:4px;font-size:22px;">Welcome to AutoTechify.</h2>
+            <p style="color:#737373;margin-top:0;font-size:14px;">You're now on the list — glad to have you.</p>
+
+            <p style="color:#404040;">
+              Whether you run a 3-person shop or a 300-person operation, one thing stays
+              the same: time is your most expensive resource. Wasted on repetitive tasks,
+              manual processes, and work that could easily be handled by the right system.
+            </p>
+
+            <p style="color:#404040;">
+              That's what I focus on — practical automation that fits real businesses.
+              Not theory. Not overengineered solutions. Just tools and systems you can
+              actually implement to free up your team, reduce overhead, and get more done
+              without hiring more people.
+            </p>
+
+            <p style="color:#404040;">
+              You'll hear from me when I ship something new, write something worth
+              reading, or find an approach that's making a real difference. No noise —
+              only things that can move the needle in your business.
+            </p>
+
+            <p style="margin-top:32px;color:#a3a3a3;font-size:12px;">
+              — Swarim, AutoTechify<br/>
+              <a href="https://autotechify.com" style="color:#a3a3a3;">autotechify.com</a>
             </p>
           </div>
         `,

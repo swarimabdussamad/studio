@@ -1,8 +1,11 @@
+"use client";
+
 import PageIntro from "@/components/PageIntro";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import ContactSection from "@/components/ContactSection";
 import Link from "next/link";
+import { useState } from "react";
 
 const apps = [
   {
@@ -37,14 +40,73 @@ const planned = [
   },
 ];
 
+function AutoWabaForm({ cta }) {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState(null); // null | "loading" | "success" | "error"
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/autowaba", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setStatus("error");
+        setMessage(data.error || "Something went wrong.");
+      } else {
+        setStatus("success");
+        setMessage("You're on the list! We'll reach out when it's ready.");
+        setEmail("");
+      }
+    } catch {
+      setStatus("error");
+      setMessage("Something went wrong. Please try again.");
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <p className="text-sm font-medium text-green-600">{message}</p>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-wrap items-center gap-x-4 gap-y-3">
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="your@email.com"
+        required
+        className="block rounded-2xl border border-neutral-300 bg-transparent px-5 py-3 text-sm text-neutral-950 placeholder:text-neutral-400 focus:border-neutral-950 focus:outline-none"
+      />
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        className="rounded-2xl bg-neutral-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-60"
+      >
+        {status === "loading" ? "Submitting…" : cta}
+      </button>
+      {status === "error" && (
+        <p className="w-full text-sm text-red-500">{message}</p>
+      )}
+    </form>
+  );
+}
+
 export default function AppsPage() {
   return (
     <>
-      <PageIntro eyebrow="Apps" title="Software I’ve built and shipped.">
+      <PageIntro eyebrow="Apps" title="Software built to reduce workload and save time.">
         <p>
-          These are real products, not portfolio pieces. Each one started as a
-          problem I had, turned into a tool I built for myself, and eventually
-          became something worth sharing.
+          These are real products built around real business problems. Each one
+          automates something that was previously done manually — saving hours,
+          reducing overhead, and scaling without needing more people.
         </p>
       </PageIntro>
 
@@ -88,19 +150,7 @@ export default function AppsPage() {
                 </ul>
                 <div className="mt-8">
                   {app.comingSoon ? (
-                    <div className="flex items-center gap-x-4">
-                      <input
-                        type="email"
-                        placeholder="your@email.com"
-                        className="block rounded-2xl border border-neutral-300 bg-transparent px-5 py-3 text-sm text-neutral-950 placeholder:text-neutral-400 focus:border-neutral-950 focus:outline-none"
-                      />
-                      <button
-                        type="button"
-                        className="rounded-2xl bg-neutral-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800"
-                      >
-                        {app.cta}
-                      </button>
-                    </div>
+                    <AutoWabaForm cta={app.cta} />
                   ) : (
                     <Link
                       href={app.href}
@@ -122,7 +172,8 @@ export default function AppsPage() {
             On the roadmap
           </h2>
           <p className="mt-2 text-base text-neutral-600">
-            Things I’m planning to build after AutoWaba is stable.
+            Tools in progress — each designed to reduce manual work for IT teams
+            and business operations.
           </p>
           <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
             {planned.map((item) => (

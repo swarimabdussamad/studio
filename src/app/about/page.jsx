@@ -31,31 +31,32 @@ const principles = [
 export default function AboutPage() {
   return (
     <>
-      <PageIntro eyebrow="About" title="A developer building in public.">
+      <PageIntro eyebrow="About" title="I build automation that works for real businesses.">
         <p>
-          I work with real production IT environments and build automation
-          software. AutoTechify is where I document what I learn and ship what I
-          build — without pretending to be a company.
+          From small teams to large operations — I design and build systems that
+          cut manual work, reduce overhead, and free people up to focus on what
+          actually matters.
         </p>
         <div className="mt-10 max-w-2xl space-y-6 text-base text-neutral-600">
           <p>
-            I started this because I kept solving the same types of problems —
-            setting up production systems, automating repetitive workflows,
-            figuring out tools that nobody documents clearly — and I wasn’t
-            writing any of it down. This site fixes that.
+            I work with real production IT environments and have spent years
+            solving the same types of problems businesses face — repetitive
+            workflows, slow manual processes, systems that need more people to
+            run than they should. I started documenting and building solutions
+            because I kept seeing the same inefficiencies everywhere.
           </p>
           <p>
             Right now I’m building <strong className="text-neutral-950">AutoWaba</strong>, a
             WhatsApp business automation dashboard that lets businesses manage
-            conversations, chatbots, and broadcast campaigns using the Meta
-            Cloud API — without needing an official BSP license. It’s my first
-            real SaaS and I’m building it completely in public.
+            conversations, run chatbots, and send broadcast campaigns using the
+            Meta Cloud API — without needing an official BSP license. One tool
+            that replaces hours of manual customer communication every week.
           </p>
           <p>
-            I also share case studies from my IT environment — server
-            configurations, network setups, automation pipelines, and the
-            failures that taught me the most. If it helped me, it’ll help
-            someone else.
+            Alongside that, I share automation scripts, IT configurations, and
+            case studies from real environments. If you want automation
+            implemented in your business — reducing workload, cutting costs, or
+            building systems that scale — reach out.
           </p>
         </div>
       </PageIntro>

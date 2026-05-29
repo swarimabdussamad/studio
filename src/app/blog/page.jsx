@@ -32,6 +32,11 @@ const topics = [
       "The tools, services, and decisions behind my setup. What I chose, what I replaced, and why.",
   },
   {
+    title: "Business Automation",
+    description:
+      "How automation applies to real business operations — reducing headcount on repetitive tasks, cutting process overhead, and building systems that earn back time every single day.",
+  },
+  {
     title: "Case Studies",
     description:
       "End-to-end breakdowns of problems I’ve solved — from the initial issue to the final solution, including what I tried that didn’t work.",

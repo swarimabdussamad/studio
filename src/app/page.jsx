@@ -10,15 +10,15 @@ const currentBuilds = [
     name: "AutoWaba",
     status: "Building",
     description:
-      "A WhatsApp business automation dashboard. Manage conversations, run chatbots, send broadcast messages — without needing a BSP license. Users connect their own Meta Business account.",
+      "A WhatsApp business automation dashboard. Manage conversations, run chatbots, send broadcast campaigns — without needing a BSP license. Built for businesses that want to automate customer communication at scale.",
     href: "/apps",
   },
   {
-    name: "AutoTechify",
-    status: "Live",
+    name: "Automation Scripts & Tools",
+    status: "Labs",
     description:
-      "This site. A personal technical hub for blog posts, build logs, experiments, and shipped apps.",
-    href: "/",
+      "Scripts, configurations, and small tools built to eliminate repetitive work. Designed for IT teams and business owners who want practical automation without complex setup.",
+    href: "/labs",
   },
 ];
 
@@ -56,12 +56,12 @@ export default function Home() {
       <Container className="mt-24 sm:mt-32">
         <FadeIn className="max-w-3xl">
           <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
-            Building production systems and automation software — in public.
+            Automation that saves time, reduces workload, and grows with your business.
           </h1>
           <p className="mt-6 text-xl text-neutral-600">
-            I work with real IT environments, build automation tools, and
-            document everything along the way. No fake case studies. No
-            corporate speak. Just engineering.
+            I build automation tools and systems for businesses — from small
+            teams to large operations. Less manual work, fewer bottlenecks, more
+            done with the people you already have.
           </p>
           <div className="mt-8 flex gap-x-4">
             <Link
@@ -87,8 +87,8 @@ export default function Home() {
         className="mt-24 sm:mt-32 lg:mt-40"
       >
         <p>
-          I build small, useful software in public — sharing progress, mistakes,
-          and lessons as I go.
+          Every tool I build starts from a real problem — something that was
+          wasting time, costing money, or needing more people than it should.
         </p>
       </SectionIntro>
       <Container className="mt-16">
@@ -128,8 +128,8 @@ export default function Home() {
         className="mt-24 sm:mt-32 lg:mt-40"
       >
         <p>
-          Everything on this site comes from real work. If I haven’t done it, I
-          don’t write about it.
+          Everything here comes from real work — automation built for real
+          businesses, documented clearly enough to use.
         </p>
       </SectionIntro>
       <Container className="mt-16">

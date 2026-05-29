@@ -21,9 +21,9 @@ const labCategories = [
       "Config files, templates, and setups for tools I use regularly — Nginx, Docker, CI pipelines, monitoring stacks.",
   },
   {
-    title: "Experiments",
+    title: "Business Automation Tools",
     description:
-      "Things I’m testing to see if they work. API explorations, new tools, edge cases. Some will be useful, some will just be interesting.",
+      "Small tools designed to eliminate manual work in business operations. API integrations, workflow triggers, notification systems — things that run quietly and save time every day.",
   },
 ];
 
