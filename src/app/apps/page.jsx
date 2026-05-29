@@ -13,8 +13,9 @@ const apps = [
     tagline: "WhatsApp Business Automation",
     status: "Building",
     description:
-      "A SaaS dashboard for managing WhatsApp business communications using the Meta Cloud API. Send broadcast messages, build chatbot flows, manage conversations, and track campaign analytics — without needing an official BSP license.",
+      "A SaaS dashboard for managing WhatsApp business communications using the Meta Cloud API. Send broadcast messages, build chatbot flows, manage conversations, and track campaign analytics. With built-in AI trained on your own business knowledge — so it answers customer questions automatically, like your best employee would.",
     details: [
+      "Train it on your business — upload your catalog, FAQs, or any document and the AI answers customer questions on WhatsApp automatically, in your tone",
       "Users connect their own Meta Business account and phone number",
       "Chatbot builder with condition-based flows",
       "Broadcast campaigns with template messages",

@@ -88,7 +88,14 @@ export async function POST(req) {
             <p style="color:#404040;line-height:1.6;">
               AutoWaba is a SaaS dashboard for managing WhatsApp business communications
               using the Meta Cloud API — send broadcasts, build chatbot flows, manage
-              conversations, and track analytics without needing an official BSP license.
+              conversations, and track campaign analytics all in one place.
+            </p>
+            <p style="color:#404040;line-height:1.6;">
+              What makes it different: you can train it on your own business. Upload
+              your product catalog, FAQs, or any document — and AutoWaba's AI will
+              automatically answer your customers' WhatsApp questions from that
+              knowledge, in your tone, without you lifting a finger. No more
+              answering the same questions manually. No more missing messages.
             </p>
             <p style="color:#404040;line-height:1.6;">
               We're still building. When it's ready, you'll be the first to know.
