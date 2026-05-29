@@ -20,6 +20,7 @@ const apps = [
       "Chatbot builder with condition-based flows",
       "Broadcast campaigns with template messages",
       "Multi-agent conversation inbox",
+      "Smart message routing — forward incoming messages to specific agents based on the sender, keyword, or custom rules you define",
       "Webhook integrations for external automation",
     ],
     href: "https://autowaba.autotechify.com",
