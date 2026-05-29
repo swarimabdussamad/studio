@@ -10,7 +10,7 @@ const currentBuilds = [
     name: "AutoWaba",
     status: "Building",
     description:
-      "A WhatsApp business automation dashboard. Manage conversations, run chatbots, send broadcast campaigns — without needing a BSP license. Built for businesses that want to automate customer communication at scale.",
+      "A WhatsApp business automation dashboard. Manage conversations, run chatbots, send broadcast campaigns, and let AI answer customer questions automatically — trained on your own business knowledge.",
     href: "/apps",
   },
   {
