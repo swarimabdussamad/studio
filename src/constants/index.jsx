@@ -13,7 +13,6 @@ export const navigation = [
   {
     title: "Projects",
     links: [
-      { title: "Apps", href: "/apps" },
       { title: "AutoWaba", href: "/apps" },
     ],
   },

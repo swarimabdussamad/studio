@@ -1,7 +1,7 @@
 import FadeIn from "./FadeIn";
 import SocialMedia from "./SocialMedia";
 
-const email = "swarimabdussamad@gmail.com";
+const email = "hello@autotechify.com";
 
 const ContactDetails = () => {
   return (

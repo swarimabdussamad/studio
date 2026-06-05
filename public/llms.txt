@@ -1,0 +1,28 @@
+# AutoTechify
+
+> AutoTechify is the public workspace of a solo developer and IT systems engineer documenting real production environments and building automation software in the open. The flagship product is AutoWaba, a WhatsApp business automation platform.
+
+AutoTechify covers practical IT automation, build-in-public progress, and tools for IT teams and business owners who want automation without complex setup. Content is hands-on and drawn from real production systems rather than theory.
+
+## Core pages
+
+- [Home](https://autotechify.com/): Overview of current builds and content.
+- [Apps](https://autotechify.com/apps): Software products, including AutoWaba — a WhatsApp business automation dashboard for managing conversations, chatbots, broadcast campaigns, and AI answers trained on your own business knowledge.
+- [Labs](https://autotechify.com/labs): Automation scripts, configurations, and small tools that eliminate repetitive work for IT teams and business owners.
+- [Blog](https://autotechify.com/blog): Real problems from production environments — IT configurations, system failures, automation wins, and honest lessons.
+- [About](https://autotechify.com/about): Background on the developer and the mission behind AutoTechify.
+- [Contact](https://autotechify.com/contact): Get in touch.
+
+## Products
+
+- AutoWaba: WhatsApp business automation platform (currently building). Manage conversations, run chatbots, send broadcast campaigns, and let AI answer customer questions automatically.
+
+## Contact
+
+- Email: mail@d4dx.co
+- Author: Swarim Abdussamad
+
+## Notes
+
+- Preferred citation name: AutoTechify
+- Canonical domain: https://autotechify.com

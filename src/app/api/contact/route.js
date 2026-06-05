@@ -1,8 +1,38 @@
-import nodemailer from "nodemailer";
+import { sendEmail } from "@/lib/email";
+import {
+  getClientIp,
+  rateLimit,
+  isBot,
+  canSendEmail,
+  recordEmailSent,
+} from "@/lib/guard";
+import fs from "fs";
+import path from "path";
+
+const DATA_FILE = path.join(process.cwd(), "data", "contacts.json");
+
+function readContacts() {
+  try {
+    if (!fs.existsSync(DATA_FILE)) return [];
+    return JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
+  } catch {
+    return [];
+  }
+}
+
+function saveContacts(list) {
+  const dir = path.dirname(DATA_FILE);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(DATA_FILE, JSON.stringify(list, null, 2), "utf8");
+}
 
 export async function POST(req) {
   try {
-    const { name, email, message, topic } = await req.json();
+    const body = await req.json();
+    const { name, email, message, topic } = body;
+
+    // Honeypot — silently accept bots so they don't retry
+    if (isBot(body)) return Response.json({ success: true });
 
     if (!name || !email || !message) {
       return Response.json(
@@ -11,22 +41,36 @@ export async function POST(req) {
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: "swarimabdussamad@gmail.com",
-        pass: process.env.GMAIL_APP_PASSWORD,
-      },
-    });
+    // Block rapid repeated submissions from the same visitor
+    if (!rateLimit(getClientIp(req))) {
+      return Response.json(
+        { error: "Too many messages. Please wait a few minutes and try again." },
+        { status: 429 }
+      );
+    }
 
-    await transporter.sendMail({
-      from: `"AutoTechify Contact" <swarimabdussamad@gmail.com>`,
-      to: "swarimabdussamad@gmail.com",
-      replyTo: email,
-      subject: `[AutoTechify] ${topic ? `[${topic}] ` : ""}Message from ${name}`,
-      html: `
+    // Save the message first so it's never lost — even if the email below
+    // fails or we've hit the daily cap. You can always read data/contacts.json.
+    const contacts = readContacts();
+    contacts.push({
+      name,
+      email,
+      topic: topic || "",
+      message,
+      receivedAt: new Date().toISOString(),
+    });
+    saveContacts(contacts);
+
+    // Notify yourself by email (skip if we've hit the daily cap — the message
+    // is already saved above, so nothing is lost)
+    try {
+      if (canSendEmail()) {
+        await sendEmail({
+          from: `AutoTechify Contact <hello@autotechify.com>`,
+          to: "hello@autotechify.com",
+          replyTo: email,
+          subject: `[AutoTechify] ${topic ? `[${topic}] ` : ""}Message from ${name}`,
+          html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">
           <h2 style="color:#0a0a0a;border-bottom:1px solid #e5e5e5;padding-bottom:12px;">
             New message from AutoTechify
@@ -56,7 +100,13 @@ export async function POST(req) {
           </p>
         </div>
       `,
-    });
+        });
+        recordEmailSent(1);
+      }
+    } catch (mailErr) {
+      // Email failed but the message was saved above — not critical
+      console.error("Contact notification email failed:", mailErr.message);
+    }
 
     return Response.json({ success: true });
   } catch (err) {

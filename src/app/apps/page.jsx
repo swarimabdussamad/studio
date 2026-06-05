@@ -4,6 +4,7 @@ import PageIntro from "@/components/PageIntro";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import ContactSection from "@/components/ContactSection";
+import Honeypot from "@/components/Honeypot";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -31,19 +32,25 @@ const apps = [
 
 const planned = [
   {
-    name: "IT Dashboard",
+    name: "Bulk Aging Report Sender",
     description:
-      "A personal operations dashboard for monitoring servers, services, and infrastructure — built for developers who run their own environments.",
+      "Upload an aging report and it emails each person their own outstanding balance separately — sent from your own email account, using your own template message. No more manually splitting the report and sending statements one by one.",
   },
   {
-    name: "Automation Recipes",
+    name: "Sales Analysis Dashboard",
     description:
-      "A library of copy-paste automation scripts for common IT tasks. Documented, tested, and ready to use.",
+      "A live sales dashboard with MTD distribution, year-over-year comparison, and a full automation log. The automation logs into your ERP like a human, pulls the MIS reports, and uploads them to the dashboard automatically — so you always get live updates without manual exports.",
+  },
+  {
+    name: "AI Meeting Minutes",
+    description:
+      "Hit record when your meeting starts, stop when it ends — AI does the rest. It auto-generates structured minutes with discussion points grouped under each action item, broken down into tasks and subtasks. Drafts auto-save every 2 seconds, so nothing is lost even if your internet drops mid-meeting. Built for a dead-simple UX.",
   },
 ];
 
 function AutoWabaForm({ cta }) {
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot
   const [status, setStatus] = useState(null); // null | "loading" | "success" | "error"
   const [message, setMessage] = useState("");
 
@@ -54,7 +61,7 @@ function AutoWabaForm({ cta }) {
       const res = await fetch("/api/autowaba", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, website }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -79,6 +86,7 @@ function AutoWabaForm({ cta }) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-wrap items-center gap-x-4 gap-y-3">
+      <Honeypot value={website} onChange={(e) => setWebsite(e.target.value)} />
       <input
         type="email"
         value={email}

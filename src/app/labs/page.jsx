@@ -4,6 +4,19 @@ import FadeIn from "@/components/FadeIn";
 import { GridList, GridListItem } from "@/components/GridList";
 import SectionIntro from "@/components/SectionIntro";
 
+export const metadata = {
+  title: "Labs — Scripts, Prototypes & Configs",
+  description:
+    "Automation scripts, prototypes, and config files for IT teams — server maintenance scripts, Docker and Nginx setups, WhatsApp webhook parsers, and business automation tools.",
+  alternates: { canonical: "/labs" },
+  openGraph: {
+    title: "Labs — Scripts, Prototypes & Configs | AutoTechify",
+    description:
+      "Automation scripts, prototypes, and config files for IT teams — server maintenance scripts, Docker and Nginx setups, WhatsApp webhook parsers, and business automation tools.",
+    url: "/labs",
+  },
+};
+
 const labCategories = [
   {
     title: "Scripts",

@@ -2,6 +2,7 @@
 import { useId, useState } from "react";
 import FadeIn from "./FadeIn";
 import Button from "./Button";
+import Honeypot from "./Honeypot";
 
 const TextInput = ({ label, ...props }) => {
   const id = useId();
@@ -35,7 +36,7 @@ const RadioInput = ({ label, ...props }) => (
 );
 
 const ContactForm = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "", topic: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "", topic: "", website: "" });
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -61,7 +62,7 @@ const ContactForm = () => {
         setStatus("error");
       } else {
         setStatus("success");
-        setForm({ name: "", email: "", message: "", topic: "" });
+        setForm({ name: "", email: "", message: "", topic: "", website: "" });
       }
     } catch {
       setErrorMsg("Could not reach the server. Check your connection.");
@@ -94,6 +95,7 @@ const ContactForm = () => {
   return (
     <FadeIn className="lg:order-last">
       <form onSubmit={handleSubmit}>
+        <Honeypot value={form.website} onChange={handleChange} />
         <h2 className="font-display text-base font-semibold text-neutral-950">
           Send a message
         </h2>

@@ -7,7 +7,7 @@ import Link from "next/link";
 import Logo from "./Logo";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { IoMdClose } from "react-icons/io";
-import Button from "./Button";
+import SayHello from "./SayHello";
 import clsx from "clsx";
 import SocialMedia from "./SocialMedia";
 import Footer from "./Footer";
@@ -27,9 +27,7 @@ const Header = ({
           <Logo invert={invert}>AutoTechify</Logo>
         </Link>
         <div className="flex items-center gap-x-8">
-          <Button href="/contact" invert={invert}>
-            Say hello
-          </Button>
+          <SayHello invert={invert} align="right" />
           <button
             ref={toggleRef}
             type="button"

@@ -49,9 +49,41 @@ const contentSections = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://autotechify.com/#organization",
+      name: "AutoTechify",
+      url: "https://autotechify.com",
+      logo: "https://autotechify.com/tortoise-logo.svg",
+      description:
+        "A developer documenting real IT environments and building automation software publicly, including AutoWaba — a WhatsApp business automation platform.",
+      founder: {
+        "@type": "Person",
+        name: "Swarim Abdussamad",
+      },
+      email: "mail@d4dx.co",
+      sameAs: ["https://instagram.com/autotechify.com_"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://autotechify.com/#website",
+      url: "https://autotechify.com",
+      name: "AutoTechify",
+      publisher: { "@id": "https://autotechify.com/#organization" },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <main className="text-black">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <Container className="mt-24 sm:mt-32">
         <FadeIn className="max-w-3xl">

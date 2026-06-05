@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "./Container";
 import FadeIn from "./FadeIn";
-import Button from "./Button";
+import SayHello from "./SayHello";
 
 const ContactSection = () => {
   return (
@@ -17,9 +17,7 @@ const ContactSection = () => {
             let’s talk.
           </p>
           <div className="mt-6 flex">
-            <Button href="/contact" invert>
-              Say hello
-            </Button>
+            <SayHello invert align="left" />
           </div>
         </div>
       </FadeIn>

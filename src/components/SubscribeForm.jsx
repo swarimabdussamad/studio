@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Honeypot from "./Honeypot";
 
 const ArrowIcon = (props) => (
   <svg viewBox="0 0 16 6" aria-hidden="true" {...props}>
@@ -14,6 +15,7 @@ const ArrowIcon = (props) => (
 
 const SubscribeForm = ({ variant = "footer" }) => {
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -26,7 +28,7 @@ const SubscribeForm = ({ variant = "footer" }) => {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, website }),
       });
       const data = await res.json();
 
@@ -54,6 +56,7 @@ const SubscribeForm = ({ variant = "footer" }) => {
   if (variant === "footer") {
     return (
       <form onSubmit={handleSubmit} className="max-w-sm w-full">
+        <Honeypot value={website} onChange={(e) => setWebsite(e.target.value)} />
         <div className="relative mt-0">
           <input
             type="email"
@@ -86,6 +89,7 @@ const SubscribeForm = ({ variant = "footer" }) => {
   // Blog page variant — larger, horizontal layout
   return (
     <form onSubmit={handleSubmit} className="mt-8 flex max-w-sm gap-x-4">
+      <Honeypot value={website} onChange={(e) => setWebsite(e.target.value)} />
       <input
         type="email"
         value={email}

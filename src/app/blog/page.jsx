@@ -5,6 +5,19 @@ import { GridList, GridListItem } from "@/components/GridList";
 import SectionIntro from "@/components/SectionIntro";
 import SubscribeForm from "@/components/SubscribeForm";
 
+export const metadata = {
+  title: "Blog — IT & Automation Write-ups",
+  description:
+    "Real problems from production IT environments — server configs, automation scripts, WhatsApp Cloud API deep dives, and honest build logs from AutoWaba.",
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "Blog — IT & Automation Write-ups | AutoTechify",
+    description:
+      "Real problems from production IT environments — server configs, automation scripts, WhatsApp Cloud API deep dives, and honest build logs from AutoWaba.",
+    url: "/blog",
+  },
+};
+
 const topics = [
   {
     title: "IT Environment",

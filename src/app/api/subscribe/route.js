@@ -1,4 +1,11 @@
-import nodemailer from "nodemailer";
+import { sendEmail } from "@/lib/email";
+import {
+  getClientIp,
+  rateLimit,
+  isBot,
+  canSendEmail,
+  recordEmailSent,
+} from "@/lib/guard";
 import fs from "fs";
 import path from "path";
 
@@ -21,12 +28,24 @@ function saveSubscribers(list) {
 
 export async function POST(req) {
   try {
-    const { email } = await req.json();
+    const body = await req.json();
+    const { email } = body;
+
+    // Honeypot — silently accept bots so they don't retry
+    if (isBot(body)) return Response.json({ success: true });
 
     if (!email || !email.includes("@")) {
       return Response.json(
         { error: "Please enter a valid email address." },
         { status: 400 }
+      );
+    }
+
+    // Block rapid repeated submissions from the same visitor
+    if (!rateLimit(getClientIp(req))) {
+      return Response.json(
+        { error: "Too many attempts. Please wait a few minutes and try again." },
+        { status: 429 }
       );
     }
 
@@ -48,38 +67,15 @@ export async function POST(req) {
     });
     saveSubscribers(subscribers);
 
-    // Notify yourself via Gmail
+    // New subscriber is already saved to subscribers.json above — no need to
+    // email ourselves (that would spend Resend quota on data we already have).
+    // We only send the welcome email to the subscriber.
     try {
-      const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
-        auth: {
-          user: "swarimabdussamad@gmail.com",
-          pass: process.env.GMAIL_APP_PASSWORD,
-        },
-      });
-
-      // Notify yourself
-      await transporter.sendMail({
-        from: `"AutoTechify" <swarimabdussamad@gmail.com>`,
-        to: "swarimabdussamad@gmail.com",
-        subject: `[AutoTechify] New subscriber: ${email}`,
-        html: `
-          <div style="font-family:sans-serif;max-width:500px;">
-            <h2 style="color:#0a0a0a;">New subscriber</h2>
-            <p style="color:#737373;">Someone just subscribed on AutoTechify.</p>
-            <p style="font-size:18px;font-weight:600;color:#0a0a0a;">${email}</p>
-            <p style="color:#a3a3a3;font-size:13px;margin-top:24px;">
-              Total subscribers: ${subscribers.length}
-            </p>
-          </div>
-        `,
-      });
-
-      // Confirmation email to subscriber
-      await transporter.sendMail({
-        from: `"AutoTechify" <swarimabdussamad@gmail.com>`,
+      // Confirmation email to subscriber (skip if we've hit the daily cap —
+      // the subscriber is already saved, so nothing is lost)
+      if (canSendEmail()) {
+      await sendEmail({
+        from: `AutoTechify <hello@autotechify.com>`,
         to: email,
         subject: `You're subscribed to AutoTechify`,
         html: `
@@ -113,6 +109,8 @@ export async function POST(req) {
           </div>
         `,
       });
+        recordEmailSent(1);
+      }
     } catch (mailErr) {
       // Email notification failed but subscription was saved — not critical
       console.error("Subscriber notification email failed:", mailErr.message);

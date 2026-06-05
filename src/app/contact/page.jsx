@@ -4,6 +4,19 @@ import PageIntro from "@/components/PageIntro";
 import Container from "@/components/Container";
 import React from "react";
 
+export const metadata = {
+  title: "Contact",
+  description:
+    "Want automation implemented in your business, or have a question about something I built or wrote? Get in touch with AutoTechify — the fastest way is email.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact | AutoTechify",
+    description:
+      "Want automation implemented in your business, or have a question about something I built or wrote? Get in touch with AutoTechify — the fastest way is email.",
+    url: "/contact",
+  },
+};
+
 const ContactPage = () => {
   return (
     <>

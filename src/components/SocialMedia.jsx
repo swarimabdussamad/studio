@@ -1,6 +1,6 @@
 import Link from "next/link";
 import clsx from "clsx";
-import { BsTwitter, BsInstagram, BsFacebook, BsLinkedin } from "react-icons/bs";
+import { BsInstagram, BsFacebook, BsLinkedin, BsDiscord } from "react-icons/bs";
 
 const HuggingFaceIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
@@ -16,13 +16,13 @@ export const SocialMediaProfiles = [
   },
   {
     title: "Instagram",
-    href: "https://instagram.com/swarimkt",
+    href: "https://instagram.com/autotechify.com_",
     icon: BsInstagram,
   },
   {
-    title: "X",
-    href: "https://x.com/swarimkt",
-    icon: BsTwitter,
+    title: "Discord",
+    href: "https://discord.gg/7537vhAVZ2",
+    icon: BsDiscord,
   },
   {
     title: "Facebook",

@@ -13,13 +13,6 @@ export function constructMetadata({
       description,
       images: [{ url: image }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [image],
-      creator: "@swarimabdussamad",
-    },
     icons,
     metadataBase: new URL("https://autotechify.com/"),
     themeColor: "#0a0a0a",
