@@ -1,9 +1,12 @@
+import Link from "next/link";
 import PageIntro from "@/components/PageIntro";
 import Container from "@/components/Container";
-import FadeIn from "@/components/FadeIn";
+import FadeIn, { FadeInStagger } from "@/components/FadeIn";
 import { GridList, GridListItem } from "@/components/GridList";
 import SectionIntro from "@/components/SectionIntro";
 import SubscribeForm from "@/components/SubscribeForm";
+import Border from "@/components/Border";
+import { getAllPosts } from "@/lib/posts";
 
 export const metadata = {
   title: "Blog — IT & Automation Write-ups",
@@ -56,7 +59,17 @@ const topics = [
   },
 ];
 
-export default function BlogPage() {
+function formatDate(value) {
+  return new Date(value).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+export default async function BlogPage() {
+  const posts = await getAllPosts();
+
   return (
     <>
       <PageIntro eyebrow="Blog" title="Writing from real production systems.">
@@ -67,30 +80,75 @@ export default function BlogPage() {
         </p>
       </PageIntro>
 
-      <SectionIntro
-        eyebrow="Topics"
-        title="What I write about."
-        className="mt-24 sm:mt-32 lg:mt-40"
-      >
-        <p>
-          Posts are dropping soon. In the meantime, here’s what to expect.
-        </p>
-      </SectionIntro>
-      <Container className="mt-16">
-        <GridList>
-          {topics.map((topic) => (
-            <GridListItem key={topic.title} title={topic.title}>
-              {topic.description}
-            </GridListItem>
-          ))}
-        </GridList>
-      </Container>
+      {posts.length > 0 ? (
+        <Container className="mt-24 sm:mt-32 lg:mt-40">
+          <FadeInStagger className="space-y-24 lg:space-y-32">
+            {posts.map((post) => (
+              <FadeIn key={post.slug}>
+                <article>
+                  <Border className="pt-16">
+                    <div className="relative lg:-mx-4 lg:flex lg:justify-end">
+                      <div className="pt-10 lg:w-2/3 lg:flex-none lg:px-4 lg:pt-0">
+                        <h2 className="font-display text-2xl font-semibold text-neutral-950">
+                          <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                        </h2>
+                        <dl className="lg:absolute lg:left-0 lg:top-0 lg:w-1/3 lg:px-4">
+                          <dt className="sr-only">Published</dt>
+                          <dd className="absolute left-0 top-0 text-sm text-neutral-950 lg:static">
+                            <time dateTime={post.publishedDate}>
+                              {formatDate(post.publishedDate)}
+                            </time>
+                          </dd>
+                          <dt className="sr-only">Category</dt>
+                          <dd className="mt-6 hidden text-sm font-semibold text-neutral-950 lg:block">
+                            {post.categoryLabel}
+                          </dd>
+                        </dl>
+                        <p className="mt-6 max-w-2xl text-base text-neutral-600">
+                          {post.summary}
+                        </p>
+                        <Link
+                          href={`/blog/${post.slug}`}
+                          className="mt-8 inline-flex items-center gap-x-2 text-sm font-semibold text-neutral-950 transition hover:text-neutral-700"
+                          aria-label={`Read more: ${post.title}`}
+                        >
+                          Read more
+                          <span aria-hidden="true">→</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </Border>
+                </article>
+              </FadeIn>
+            ))}
+          </FadeInStagger>
+        </Container>
+      ) : (
+        <>
+          <SectionIntro
+            eyebrow="Topics"
+            title="What I write about."
+            className="mt-24 sm:mt-32 lg:mt-40"
+          >
+            <p>Posts are dropping soon. In the meantime, here’s what to expect.</p>
+          </SectionIntro>
+          <Container className="mt-16">
+            <GridList>
+              {topics.map((topic) => (
+                <GridListItem key={topic.title} title={topic.title}>
+                  {topic.description}
+                </GridListItem>
+              ))}
+            </GridList>
+          </Container>
+        </>
+      )}
 
       <Container className="mt-24 sm:mt-32 lg:mt-40">
         <FadeIn className="-mx-6 rounded-4xl border border-neutral-200 px-6 py-16 sm:mx-0 sm:px-16 sm:py-24">
           <div className="max-w-xl">
             <h2 className="font-display text-2xl font-semibold text-neutral-950">
-              First posts coming soon.
+              {posts.length > 0 ? "Get new posts in your inbox." : "First posts coming soon."}
             </h2>
             <p className="mt-4 text-base text-neutral-600">
               Subscribe to get notified when I publish. No newsletters full of

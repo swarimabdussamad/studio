@@ -1,0 +1,41 @@
+---
+title: Welcome to the AutoTechify blog
+publishedDate: 2026-06-13
+summary: >-
+  Why this blog exists, what I'll write about, and how it's built — Next.js 16
+  with a git-based CMS so every post lives in the repo.
+category: build-logs
+---
+
+This is the first post on the AutoTechify blog. It's also a test of the new
+setup, so if you're reading it rendered nicely, the whole pipeline works.
+
+## Why this blog
+
+I spend my days inside real production IT environments and building automation
+on top of them — mostly around the WhatsApp Cloud API and a project called
+AutoWaba. The writing here is the stuff I actually did, not theory.
+
+No SEO padding. If I haven't experienced it, I won't write about it.
+
+## How it's built
+
+The site runs on **Next.js 16** with the App Router. Posts are managed with a
+git-based CMS, which means:
+
+- Every post is a Markdown file committed to the repo
+- Full version history on each post, for free
+- No database, no external service, no monthly bill
+
+Editing happens in a clean admin UI, but the output is just files:
+
+```bash
+# A new post is literally a new folder + markdown file
+src/content/posts/my-new-post/index.mdoc
+```
+
+## What's next
+
+More posts, soon — build logs, Cloud API deep dives, and honest write-ups of
+things that broke and how I fixed them. Subscribe below if you want them in
+your inbox.
