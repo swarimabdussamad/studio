@@ -2,26 +2,83 @@
 title: Welcome to the AutoTechify blog
 publishedDate: 2026-06-13
 summary: >-
-  Why this blog exists, what I'll write about, and how it's built — Next.js 16
-  with a git-based CMS so every post lives in the repo.
+  Why I started AutoTechify — sharing the real automations and tools I build
+  inside a running business, so other owners and developers can save time and
+  money. Plus how this site itself is built.
 category: build-logs
 ---
 
-This is the first post on the AutoTechify blog. It's also a test of the new
-setup, so if you're reading it rendered nicely, the whole pipeline works.
+This is the first post on AutoTechify, so let me start with the basics: who I
+am, why this site exists, and who I'm building it for.
+
+## Who I am
+
+I'm Swarim Abdussamad. I work at an FMCG company in Qatar — mainly food
+products, with some construction materials and automobile parts on the side.
+I've been here about five months, and I'm a developer sitting inside a real,
+established business.
+
+That last part matters. In five months I've seen how much actually happens
+behind the scenes of a company like this — a huge amount of process, every
+single day. And a lot of it still runs on old, slow, manual methods that are
+time-consuming and not always accurate. Almost every one of those processes is
+something a developer can improve, automate, and make reliable.
 
 ## Why this blog
 
-I spend my days inside real production IT environments and building automation
-on top of them — mostly around the WhatsApp Cloud API and a project called
-AutoWaba. The writing here is the stuff I actually did, not theory.
+The more I saw, the more obvious it became: this isn't unique to my company.
+Every business owner, entrepreneur, and team is dealing with the same kind of
+work. So why keep what I learn to myself?
 
-No SEO padding. If I haven't experienced it, I won't write about it.
+AutoTechify is where I share the actual tools and automations I use — the
+real ones running in production, not theory. The goal is simple: help other
+business owners save time and money, and give developers something concrete to
+reference when they want to automate inside their own companies.
 
-## How it's built
+No SEO padding. If I haven't built it or lived it, I won't write about it.
 
-The site runs on **Next.js 16** with the App Router. Posts are managed with a
-git-based CMS, which means:
+## A real example: cutting ERP costs with daily automation
+
+Most companies today run on an ERP. We do too — and with 10+ branches, a large
+volume of data piles up and gets structured in the system every single day.
+
+The ERP is built by a service provider, and we buy it. The problem is the one
+every owner knows: even for a small change, they ask for more money. I think
+about this the way a business owner would — always trying to cut expense, while
+still demanding a system that's actually perfect for us.
+
+So as a developer, I just built around it. Every day an automation logs into
+the ERP with our credentials, downloads the MIS report, and feeds it into a
+small internal tool I built — an "Office Manager." It then presents the numbers
+the way a business owner actually wants to see them.
+
+- A **daily cron job** pulls and refreshes the latest figures
+- A **weekly cron job** builds out the bigger picture: the exact organization
+  tree, MTD sales analysis and distribution, and year-over-year comparisons
+
+Yes, the ERP already has a dashboard. But this is more advanced, and — more
+importantly — I can adjust it ourselves whenever we need to, instead of paying
+and waiting for the provider. For tracking salesmen and reading the real state
+of the company, this kind of view is genuinely useful to an owner.
+
+That's the spirit of everything here: see a slow or expensive process, and
+replace it with something automated, accurate, and ours.
+
+## Coming soon: a free Meta CRM
+
+Almost every business runs on a CRM or BSP of some kind. As a developer, that's
+another thing you can just build. I've put together a CRM on top of the Meta
+developer platform — integrating the Meta APIs into one place — and I'll be
+releasing it soon.
+
+It'll be **free to start with**, so you can see for yourself how complete it is
+and what setups it works for. More on that in an upcoming post.
+
+## How this site is built
+
+The site itself is part of the point, so here's how it works. It runs on
+**Next.js 16** with the App Router, and posts are managed with a git-based CMS.
+That means:
 
 - Every post is a Markdown file committed to the repo
 - Full version history on each post, for free
@@ -34,8 +91,18 @@ Editing happens in a clean admin UI, but the output is just files:
 src/content/posts/my-new-post/index.mdoc
 ```
 
-## What's next
+Cheap, fast, and fully under my control — exactly the kind of setup I'd
+recommend to anyone trying to do more without adding cost.
 
-More posts, soon — build logs, Cloud API deep dives, and honest write-ups of
-things that broke and how I fixed them. Subscribe below if you want them in
-your inbox.
+## Stay in the loop
+
+I'll keep posting everything I build and learn here — useful for business
+owners who want to run leaner, and for developers who want real examples to
+reference.
+
+**Subscribe and follow** so each new post reaches you. And
+[**join the Discord**](https://discord.com/invite/7537vhAVZ2) — I'd love for
+developers to share what they're building inside their own businesses and the
+latest tech they're using. It helps all of us, me included.
+
+More soon.
