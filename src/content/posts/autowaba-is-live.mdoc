@@ -1,0 +1,142 @@
+---
+title: AutoWaba is live — a free WhatsApp CRM built on the Meta Cloud API
+publishedDate: 2026-06-16
+summary: >-
+  AutoWaba is out. It's a free WhatsApp CRM built directly on the Meta Cloud
+  API — run it alongside your existing CRM, auto-forward messages, send
+  campaigns, plug in your catalogue, and let an AI chatbot answer product
+  questions for you.
+category: build-logs
+---
+
+A while back I said I was building a free CRM on top of the Meta developer
+platform and would release it soon. It's here. It's called **AutoWaba**, it's
+now in **beta**, and this post is the honest rundown of what it does today.
+
+The short version: AutoWaba is a WhatsApp CRM built directly on the **Meta
+Cloud API**. We're a **verified Meta Tech Provider**, so you can connect a real
+WhatsApp Business portfolio and run it properly — not through a fragile
+workaround. Since it's in a beta testing phase, it's **free to set up for up to
+2 months** — use it on your real numbers, see exactly how complete it is, and
+then decide whether to continue.
+
+You can find it at
+**[autowaba.autotechify.com](https://autowaba.autotechify.com)**.
+
+## What AutoWaba does
+
+Here's the full feature list as it stands today.
+
+### Run it next to your existing CRM — no migration
+
+This is the part I'm most happy with. You don't have to rip out whatever you're
+already using. AutoWaba can run **side by side with your existing WhatsApp CRM
+or BSP** at the same time.
+
+The trick is webhook chaining. Every incoming message from Meta hits AutoWaba
+first, and AutoWaba can forward that raw payload — byte-for-byte, signed — on to
+your other provider. So both systems stay in sync and nothing breaks.
+
+Setting it up is one screen:
+
+1. Go to **Settings → Webhooks → Add Webhook**
+2. Paste your existing CRM's webhook URL
+3. Select the events you want to forward (message incoming, message sent,
+   contact created, transfers, or the **Raw Meta Payload (BSP Forward)** event
+   to chain another BSP)
+
+![Adding a webhook in AutoWaba — paste your existing CRM's URL and pick the events to forward](/images/blog/autowaba-webhooks.png)
+
+The one to pay attention to is **Raw Meta Payload (BSP Forward)**. Select that
+event and AutoWaba forwards **every incoming Meta webhook** for your
+organization's WhatsApp accounts — messages, statuses, calls, template updates —
+**byte-for-byte**, exactly as Meta sent it. Each forward is signed with the
+webhook's secret as `X-Hub-Signature-256`, so the receiving system can verify
+it's genuine before trusting it.
+
+![The Raw Meta Payload (BSP Forward) event — forwards every incoming Meta webhook byte-for-byte, signed with X-Hub-Signature-256, for chaining another BSP](/images/blog/autowaba-raw-meta-payload.png)
+
+That's the option that makes true BSP chaining work: your existing provider
+keeps receiving the exact same data straight from Meta, so running two systems
+at once is actually reliable instead of a hack.
+
+### Connect your existing WhatsApp Business portfolio
+
+Because we're a verified Tech Provider, you connect your **existing WhatsApp
+Business portfolio** directly. You bring your own numbers and your own Business
+Account — AutoWaba just gives you a clean place to work with them.
+
+### Auto message forwarding
+
+The classic feature, done properly. Turn on **auto-forward** for a number and
+every incoming message gets pushed to another WhatsApp number automatically. It
+even uses an approved template for delivery, so forwards still land when the
+destination has no open 24-hour session.
+
+![Account settings — auto-forward incoming messages and read receipts](/images/blog/autowaba-account-settings.png)
+
+When you pick the delivery template, the template parameters control what the
+forwarded message looks like:
+
+- `{{1}}` → **who it's from** (the sender)
+- `{{2}}` → **the message** they sent
+
+So with a two-parameter template, the number you forward to sees both *who*
+messaged and *what* they said. If your template only has a single parameter,
+both get combined into that one slot. (Media is summarized as text.) Just choose
+the template that matches how you want the forward to read.
+
+### Campaigns
+
+Send broadcast **campaigns** to your contacts using approved templates — the
+normal bulk-messaging workflow you'd expect from a CRM.
+
+### Catalogue integration
+
+Connect your **product catalogue** (via your Business Portfolio ID) so products
+live inside the CRM, ready to share in chats.
+
+### AI chatbot tied to your catalogue
+
+This is where it gets fun. There's a built-in **AI chatbot** that's connected to
+your catalogue. So when a customer asks about a product, they get a friendly,
+natural answer pulling from your real catalogue data — not a rigid menu tree.
+The goal is a genuinely user-friendly experience that helps customers find what
+they want without a human having to jump in for every question.
+
+## What's tested, and what isn't — yet
+
+I'd rather be straight about this than oversell it.
+
+- **Flows are tested and verified.** The core message flow works end to end.
+- **The rest is still being tested.** Campaigns, catalogue, the AI chatbot, and
+  webhook forwarding all work in my setup, but I'm putting them through proper
+  testing before I call them rock-solid. I'll post updates as each one is
+  signed off.
+
+That's the deal with a free, early release — you get it early, and I keep
+shipping fixes in the open.
+
+## Get set up for free — we'll do it for you
+
+Here's the offer: message us on WhatsApp and **we'll set AutoWaba up for you,
+free, for up to 2 months.** Use it, run it on your real numbers, and then decide
+whether to continue. No upfront cost to find out if it fits.
+
+**Contact us on WhatsApp: [+974 7142 7415](https://wa.me/97471427415)**
+
+Just send a message with your **business details** and we'll take it from there.
+This is genuinely free, and spots are **limited** — so don't wait, reach out
+while it's open.
+
+## Try it yourself
+
+Prefer to dig in on your own first? Head to
+**[autowaba.autotechify.com](https://autowaba.autotechify.com)** — AutoWaba is
+**free to start**. Connect a number, paste in your existing webhook if you have
+one, and see how it fits your setup.
+
+If you're a developer building inside your own business, I'd genuinely like to
+hear what breaks and what you'd want next —
+[**join the Discord**](https://discord.com/invite/7537vhAVZ2) and tell me. More
+build logs on AutoWaba coming as the rest of the features get verified.

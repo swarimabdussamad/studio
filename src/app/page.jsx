@@ -8,10 +8,11 @@ import Link from "next/link";
 const currentBuilds = [
   {
     name: "AutoWaba",
-    status: "Building",
+    status: "Beta",
+    free: true,
     description:
-      "A WhatsApp business automation dashboard. Manage conversations, run chatbots, send broadcast campaigns, and let AI answer customer questions automatically — trained on your own business knowledge.",
-    href: "/apps",
+      "A WhatsApp business automation dashboard, now in beta. Manage conversations, run chatbots, send broadcast campaigns, and let AI answer customer questions automatically — trained on your own business knowledge. Free to set up for 2 months while in testing.",
+    href: "https://autowaba.autotechify.com",
   },
   {
     name: "Automation Scripts & Tools",
@@ -127,25 +128,49 @@ export default function Home() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           {currentBuilds.map((build) => (
             <FadeIn key={build.name}>
-              <Link href={build.href} className="group block">
-                <div className="rounded-3xl border border-neutral-200 p-8 transition group-hover:border-neutral-400">
+              <Link
+                href={build.href}
+                className="group block"
+                {...(build.href.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                <div className="h-full cursor-pointer rounded-3xl border border-neutral-200 p-8 transition duration-300 group-hover:-translate-y-1 group-hover:border-neutral-950 group-hover:shadow-xl group-hover:shadow-neutral-950/5">
                   <div className="flex items-center justify-between">
                     <h3 className="font-display text-xl font-semibold text-neutral-950">
                       {build.name}
                     </h3>
-                    <span
-                      className={`rounded-full px-3 py-1 text-xs font-medium ${
-                        build.status === "Live"
-                          ? "bg-green-100 text-green-700"
-                          : "bg-amber-100 text-amber-700"
-                      }`}
-                    >
-                      {build.status}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      {build.free ? (
+                        <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
+                          Free
+                        </span>
+                      ) : null}
+                      <span
+                        className={`rounded-full px-3 py-1 text-xs font-medium ${
+                          build.status === "Live"
+                            ? "bg-green-100 text-green-700"
+                            : build.status === "Beta"
+                              ? "bg-blue-100 text-blue-700"
+                              : "bg-amber-100 text-amber-700"
+                        }`}
+                      >
+                        {build.status}
+                      </span>
+                    </div>
                   </div>
                   <p className="mt-4 text-base text-neutral-600">
                     {build.description}
                   </p>
+                  <span className="mt-6 inline-flex items-center gap-x-2 text-sm font-semibold text-neutral-950">
+                    {build.href.startsWith("http") ? "Visit site" : "Learn more"}
+                    <span
+                      aria-hidden="true"
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </span>
                 </div>
               </Link>
             </FadeIn>
