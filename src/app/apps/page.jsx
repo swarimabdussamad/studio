@@ -25,8 +25,8 @@ const apps = [
       "Webhook integrations for external automation",
     ],
     href: "https://autowaba.autotechify.com",
-    cta: "Join early access",
-    comingSoon: true,
+    cta: "Visit site",
+    comingSoon: false,
   },
 ];
 
@@ -112,9 +112,13 @@ export default function AppsPage() {
                   ) : (
                     <Link
                       href={app.href}
-                      className="inline-flex rounded-2xl bg-neutral-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800"
+                      {...(app.href.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                      className="inline-flex items-center gap-x-2 rounded-2xl bg-neutral-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800"
                     >
                       {app.cta}
+                      <span aria-hidden="true">→</span>
                     </Link>
                   )}
                 </div>

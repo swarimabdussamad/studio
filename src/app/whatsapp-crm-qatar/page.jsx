@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
-import PageIntro from "@/components/PageIntro";
+import LanguageToggle from "@/components/LanguageToggle";
 import SectionIntro from "@/components/SectionIntro";
 import { GridList, GridListItem } from "@/components/GridList";
 import ContactSection from "@/components/ContactSection";
@@ -26,7 +26,14 @@ export const metadata = {
     "Wati alternative Qatar",
     "AutoWaba",
   ],
-  alternates: { canonical: "/whatsapp-crm-qatar" },
+  alternates: {
+    canonical: "/whatsapp-crm-qatar",
+    languages: {
+      en: "/whatsapp-crm-qatar",
+      ar: "/ar/whatsapp-crm-qatar",
+      "x-default": "/whatsapp-crm-qatar",
+    },
+  },
   openGraph: {
     title: "Free WhatsApp CRM in Qatar — AutoWaba | AutoTechify",
     description,
@@ -149,21 +156,31 @@ export default function WhatsAppCrmQatarPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <PageIntro
-        eyebrow="Free WhatsApp CRM · Qatar"
-        title="The free WhatsApp CRM built for businesses in Qatar."
-      >
-        <p>
-          AutoWaba turns your WhatsApp number into a full customer platform —
-          broadcasts, chatbots, a shared team inbox, and AI that answers
-          customers in Arabic and English automatically. Built on the official
-          Meta Cloud API, built and supported from Qatar — and free to start
-          during early access.
-        </p>
-        <div className="mt-8">
-          <AutoWabaForm cta="Get free access" source="whatsapp-crm-qatar" />
-        </div>
-      </PageIntro>
+      <Container className="mt-24 sm:mt-32 lg:mt-40">
+        <FadeIn>
+          <LanguageToggle href="/ar/whatsapp-crm-qatar" label="عربية" />
+          <h1 className="mt-8">
+            <span className="block font-display text-base font-semibold text-neutral-950">
+              Free WhatsApp CRM · Qatar
+            </span>
+            <span className="mt-6 block max-w-5xl font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl">
+              The free WhatsApp CRM built for businesses in Qatar.
+            </span>
+          </h1>
+          <div className="mt-6 max-w-3xl text-xl text-neutral-600">
+            <p>
+              AutoWaba turns your WhatsApp number into a full customer platform —
+              broadcasts, chatbots, a shared team inbox, and AI that answers
+              customers in Arabic and English automatically. Built on the official
+              Meta Cloud API, built and supported from Qatar — and free to start
+              during early access.
+            </p>
+          </div>
+          <div className="mt-8">
+            <AutoWabaForm cta="Get free access" source="whatsapp-crm-qatar" />
+          </div>
+        </FadeIn>
+      </Container>
 
       <SectionIntro
         eyebrow="What it does"
