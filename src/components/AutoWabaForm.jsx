@@ -49,11 +49,12 @@ export default function AutoWabaForm({ cta = "Join early access", source = "apps
       <Honeypot value={website} onChange={(e) => setWebsite(e.target.value)} />
       <input
         type="email"
+        dir="ltr"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your@email.com"
         required
-        className="block rounded-2xl border border-neutral-300 bg-transparent px-5 py-3 text-sm text-neutral-950 placeholder:text-neutral-400 focus:border-neutral-950 focus:outline-none"
+        className="block rounded-2xl border border-neutral-300 bg-transparent px-5 py-3 text-start text-sm text-neutral-950 placeholder:text-neutral-400 focus:border-neutral-950 focus:outline-none"
       />
       <button
         type="submit"
