@@ -53,9 +53,6 @@ export const metadata = {
       "max-video-preview": -1,
     },
   },
-  icons: {
-    icon: "/tortoise-logo.svg",
-  },
 };
 
 export default function Layout({ children }) {

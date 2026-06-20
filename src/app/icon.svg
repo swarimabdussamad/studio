@@ -1,12 +1,15 @@
-<svg width="64" height="64" viewBox="6 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Top-down view of tortoise - HEAD UP, TAIL DOWN -->
-  
+<svg width="96" height="96" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Static, square favicon version of the AutoTechify tortoise (no animation) -->
+
+  <!-- Solid background so search engines don't render transparent edges as gray -->
+  <rect width="40" height="40" fill="#ffffff"/>
+
   <!-- Shell (main body - vertical oval) -->
-  <ellipse cx="20" cy="20" rx="10" ry="14" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.5" class="shell"/>
-  
+  <ellipse cx="20" cy="20" rx="10" ry="14" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.5"/>
+
   <!-- Shell Pattern (hexagonal segments) -->
-  <ellipse cx="20" cy="20" rx="7" ry="10" fill="#2d2d2d" class="shell-pattern"/>
-  
+  <ellipse cx="20" cy="20" rx="7" ry="10" fill="#2d2d2d"/>
+
   <!-- Shell segments -->
   <circle cx="20" cy="14" r="2" fill="#ffffff"/>
   <circle cx="17" cy="18" r="2" fill="#ffffff"/>
@@ -14,125 +17,24 @@
   <circle cx="20" cy="21" r="2" fill="#ffffff"/>
   <circle cx="17" cy="24" r="1.8" fill="#ffffff"/>
   <circle cx="23" cy="24" r="1.8" fill="#ffffff"/>
-  
+
   <!-- Head (pointing UP - at top) -->
-  <ellipse cx="20" cy="6" rx="3" ry="4" fill="#1a1a1a" stroke="#ffffff" stroke-width="1" class="head"/>
+  <ellipse cx="20" cy="6" rx="3" ry="4" fill="#1a1a1a" stroke="#ffffff" stroke-width="1"/>
   <circle cx="18.5" cy="5.5" r="0.7" fill="#fff"/>
   <circle cx="21.5" cy="5.5" r="0.7" fill="#fff"/>
 
   <!-- Front Left Leg (top left) -->
-  <ellipse cx="12" cy="11" rx="2.5" ry="3" fill="#1a1a1a" stroke="#ffffff" stroke-width="1" class="leg-front-left" transform="rotate(-45 12 11)"/>
+  <ellipse cx="12" cy="11" rx="2.5" ry="3" fill="#1a1a1a" stroke="#ffffff" stroke-width="1" transform="rotate(-45 12 11)"/>
 
   <!-- Front Right Leg (top right) -->
-  <ellipse cx="28" cy="11" rx="2.5" ry="3" fill="#1a1a1a" stroke="#ffffff" stroke-width="1" class="leg-front-right" transform="rotate(45 28 11)"/>
+  <ellipse cx="28" cy="11" rx="2.5" ry="3" fill="#1a1a1a" stroke="#ffffff" stroke-width="1" transform="rotate(45 28 11)"/>
 
   <!-- Back Left Leg (bottom left) -->
-  <ellipse cx="12" cy="29" rx="2.5" ry="3" fill="#1a1a1a" stroke="#ffffff" stroke-width="1" class="leg-back-left" transform="rotate(-135 12 29)"/>
+  <ellipse cx="12" cy="29" rx="2.5" ry="3" fill="#1a1a1a" stroke="#ffffff" stroke-width="1" transform="rotate(-135 12 29)"/>
 
   <!-- Back Right Leg (bottom right) -->
-  <ellipse cx="28" cy="29" rx="2.5" ry="3" fill="#1a1a1a" stroke="#ffffff" stroke-width="1" class="leg-back-right" transform="rotate(135 28 29)"/>
+  <ellipse cx="28" cy="29" rx="2.5" ry="3" fill="#1a1a1a" stroke="#ffffff" stroke-width="1" transform="rotate(135 28 29)"/>
 
   <!-- Tail (pointing DOWN - at bottom) -->
-  <ellipse cx="20" cy="34" rx="2" ry="3" fill="#1a1a1a" stroke="#ffffff" stroke-width="1" class="tail"/>
-  
-  <style>
-    @keyframes leg-walk {
-      0%, 100% { 
-        transform: translateY(0px) scale(1);
-        opacity: 1;
-      }
-      50% { 
-        transform: translateY(-2px) scale(0.95);
-        opacity: 0.85;
-      }
-    }
-    
-    @keyframes leg-walk-fast {
-      0%, 100% { 
-        transform: translateY(0px) scale(1);
-        opacity: 1;
-      }
-      50% { 
-        transform: translateY(-4px) scale(0.9);
-        opacity: 0.75;
-      }
-    }
-    
-    @keyframes shell-bob {
-      0%, 100% { 
-        transform: translateY(0px);
-      }
-      50% { 
-        transform: translateY(-1px);
-      }
-    }
-    
-    @keyframes shell-bob-fast {
-      0%, 100% { 
-        transform: translateY(0px);
-      }
-      50% { 
-        transform: translateY(-3px);
-      }
-    }
-    
-    /* Slow walking - legs alternate */
-    .leg-front-left {
-      animation: leg-walk 0.8s ease-in-out infinite;
-      transform-origin: center;
-    }
-    
-    .leg-front-right {
-      animation: leg-walk 0.8s ease-in-out infinite;
-      animation-delay: 0.4s;
-      transform-origin: center;
-    }
-    
-    .leg-back-left {
-      animation: leg-walk 0.8s ease-in-out infinite;
-      animation-delay: 0.2s;
-      transform-origin: center;
-    }
-    
-    .leg-back-right {
-      animation: leg-walk 0.8s ease-in-out infinite;
-      animation-delay: 0.6s;
-      transform-origin: center;
-    }
-    
-    .shell {
-      animation: shell-bob 0.8s ease-in-out infinite;
-      transform-origin: center;
-    }
-    
-    .shell-pattern {
-      animation: shell-bob 0.8s ease-in-out infinite;
-      transform-origin: center;
-    }
-    
-    /* Fast running - triggered by parent container class */
-    svg.running .leg-front-left,
-    svg.running .leg-front-right,
-    svg.running .leg-back-left,
-    svg.running .leg-back-right {
-      animation: leg-walk-fast 0.3s ease-in-out infinite;
-    }
-    
-    svg.running .leg-front-right {
-      animation-delay: 0.15s;
-    }
-    
-    svg.running .leg-back-left {
-      animation-delay: 0.075s;
-    }
-    
-    svg.running .leg-back-right {
-      animation-delay: 0.225s;
-    }
-    
-    svg.running .shell,
-    svg.running .shell-pattern {
-      animation: shell-bob-fast 0.3s ease-in-out infinite;
-    }
-  </style>
+  <ellipse cx="20" cy="34" rx="2" ry="3" fill="#1a1a1a" stroke="#ffffff" stroke-width="1"/>
 </svg>
