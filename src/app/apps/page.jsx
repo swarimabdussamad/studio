@@ -11,7 +11,8 @@ const apps = [
   {
     name: "AutoWaba",
     tagline: "WhatsApp Business Automation",
-    status: "Building",
+    status: "Beta",
+    free: true,
     description:
       "A SaaS dashboard for managing WhatsApp business communications using the Meta Cloud API. Send broadcast messages, build chatbot flows, manage conversations, and track campaign analytics. With built-in AI trained on your own business knowledge — so it answers customer questions automatically, like your best employee would.",
     details: [
@@ -72,15 +73,24 @@ export default function AppsPage() {
                       {app.tagline}
                     </p>
                   </div>
-                  <span
-                    className={`rounded-full px-4 py-1.5 text-sm font-medium ${
-                      app.status === "Live"
-                        ? "bg-green-100 text-green-700"
-                        : "bg-amber-100 text-amber-700"
-                    }`}
-                  >
-                    {app.status}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    {app.free ? (
+                      <span className="rounded-full bg-green-100 px-4 py-1.5 text-sm font-medium text-green-700">
+                        Free
+                      </span>
+                    ) : null}
+                    <span
+                      className={`rounded-full px-4 py-1.5 text-sm font-medium ${
+                        app.status === "Live"
+                          ? "bg-green-100 text-green-700"
+                          : app.status === "Beta"
+                            ? "bg-blue-100 text-blue-700"
+                            : "bg-amber-100 text-amber-700"
+                      }`}
+                    >
+                      {app.status}
+                    </span>
+                  </div>
                 </div>
                 <p className="mt-6 text-base text-neutral-600 max-w-2xl">
                   {app.description}
