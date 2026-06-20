@@ -14,6 +14,7 @@ export const navigation = [
     title: "Projects",
     links: [
       { title: "AutoWaba", href: "/apps" },
+      { title: "WhatsApp CRM in Qatar", href: "/whatsapp-crm-qatar" },
     ],
   },
   {

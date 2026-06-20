@@ -4,9 +4,8 @@ import PageIntro from "@/components/PageIntro";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
 import ContactSection from "@/components/ContactSection";
-import Honeypot from "@/components/Honeypot";
+import AutoWabaForm from "@/components/AutoWabaForm";
 import Link from "next/link";
-import { useState } from "react";
 
 const apps = [
   {
@@ -47,67 +46,6 @@ const planned = [
       "Hit record when your meeting starts, stop when it ends — AI does the rest. It auto-generates structured minutes with discussion points grouped under each action item, broken down into tasks and subtasks. Drafts auto-save every 2 seconds, so nothing is lost even if your internet drops mid-meeting. Built for a dead-simple UX.",
   },
 ];
-
-function AutoWabaForm({ cta }) {
-  const [email, setEmail] = useState("");
-  const [website, setWebsite] = useState(""); // honeypot
-  const [status, setStatus] = useState(null); // null | "loading" | "success" | "error"
-  const [message, setMessage] = useState("");
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setStatus("loading");
-    try {
-      const res = await fetch("/api/autowaba", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, website }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setStatus("error");
-        setMessage(data.error || "Something went wrong.");
-      } else {
-        setStatus("success");
-        setMessage("You're on the list! We'll reach out when it's ready.");
-        setEmail("");
-      }
-    } catch {
-      setStatus("error");
-      setMessage("Something went wrong. Please try again.");
-    }
-  }
-
-  if (status === "success") {
-    return (
-      <p className="text-sm font-medium text-green-600">{message}</p>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="flex flex-wrap items-center gap-x-4 gap-y-3">
-      <Honeypot value={website} onChange={(e) => setWebsite(e.target.value)} />
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="your@email.com"
-        required
-        className="block rounded-2xl border border-neutral-300 bg-transparent px-5 py-3 text-sm text-neutral-950 placeholder:text-neutral-400 focus:border-neutral-950 focus:outline-none"
-      />
-      <button
-        type="submit"
-        disabled={status === "loading"}
-        className="rounded-2xl bg-neutral-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-60"
-      >
-        {status === "loading" ? "Submitting…" : cta}
-      </button>
-      {status === "error" && (
-        <p className="w-full text-sm text-red-500">{message}</p>
-      )}
-    </form>
-  );
-}
 
 export default function AppsPage() {
   return (

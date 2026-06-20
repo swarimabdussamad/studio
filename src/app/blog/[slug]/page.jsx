@@ -44,8 +44,30 @@ export default async function BlogPostPage({ params }) {
   const post = await getPost(slug);
   if (!post) notFound();
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.summary,
+    datePublished: post.publishedDate,
+    dateModified: post.publishedDate,
+    author: { "@type": "Person", name: "Swarim Abdussamad" },
+    publisher: { "@id": "https://autotechify.com/#organization" },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://autotechify.com/blog/${post.slug}`,
+    },
+    ...(post.coverImage
+      ? { image: `https://autotechify.com${post.coverImage}` }
+      : {}),
+  };
+
   return (
     <article className="mt-24 sm:mt-32 lg:mt-40">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <Container>
         <FadeIn>
           <header className="mx-auto flex max-w-5xl flex-col text-center">
