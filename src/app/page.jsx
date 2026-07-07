@@ -8,10 +8,9 @@ import Link from "next/link";
 const currentBuilds = [
   {
     name: "AutoWaba",
-    status: "Beta",
-    free: true,
+    offer: "$2 for 2 months",
     description:
-      "A WhatsApp business automation dashboard, now in beta. Manage conversations, run chatbots, send broadcast campaigns, and let AI answer customer questions automatically — trained on your own business knowledge. Free to set up for 2 months while in testing.",
+      "Manage your WhatsApp customer queries easily with AutoWaba — auto-assign chats to the right sales agent and let AI reply with the context you set about your business, courses, and more. Get started for just $2 for your first 2 months.",
     href: "https://autowaba.autotechify.com",
   },
   {
@@ -85,8 +84,24 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
+      {/* Exclusive offer banner */}
+      <Container className="mt-6">
+        <FadeIn className="flex justify-center">
+          <Link
+            href="https://autowaba.autotechify.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="offer-badge offer-badge-shine relative overflow-hidden inline-flex items-center gap-x-2 rounded-full px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-purple-500/20 transition hover:scale-105 sm:text-base"
+          >
+            <span>Exclusive Offer — AutoWaba at $2 for 2 months</span>
+            <span aria-hidden="true">→</span>
+          </Link>
+        </FadeIn>
+      </Container>
+
       {/* Hero */}
-      <Container className="mt-24 sm:mt-32">
+      <Container className="mt-12 sm:mt-16">
         <FadeIn className="max-w-3xl">
           <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
             Automation that saves time, reduces workload, and grows with your business.
@@ -141,22 +156,24 @@ export default function Home() {
                       {build.name}
                     </h3>
                     <div className="flex items-center gap-2">
-                      {build.free ? (
+                      {build.offer ? (
                         <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
-                          Free
+                          {build.offer}
                         </span>
                       ) : null}
-                      <span
-                        className={`rounded-full px-3 py-1 text-xs font-medium ${
-                          build.status === "Live"
-                            ? "bg-green-100 text-green-700"
-                            : build.status === "Beta"
-                              ? "bg-blue-100 text-blue-700"
-                              : "bg-amber-100 text-amber-700"
-                        }`}
-                      >
-                        {build.status}
-                      </span>
+                      {build.status ? (
+                        <span
+                          className={`rounded-full px-3 py-1 text-xs font-medium ${
+                            build.status === "Live"
+                              ? "bg-green-100 text-green-700"
+                              : build.status === "Beta"
+                                ? "bg-blue-100 text-blue-700"
+                                : "bg-amber-100 text-amber-700"
+                          }`}
+                        >
+                          {build.status}
+                        </span>
+                      ) : null}
                     </div>
                   </div>
                   <p className="mt-4 text-base text-neutral-600">

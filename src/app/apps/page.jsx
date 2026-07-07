@@ -11,10 +11,9 @@ const apps = [
   {
     name: "AutoWaba",
     tagline: "WhatsApp Business Automation",
-    status: "Beta",
-    free: true,
+    offer: "$2 for 2 months",
     description:
-      "A SaaS dashboard for managing WhatsApp business communications using the Meta Cloud API. Send broadcast messages, build chatbot flows, manage conversations, and track campaign analytics. With built-in AI trained on your own business knowledge — so it answers customer questions automatically, like your best employee would.",
+      "Manage your WhatsApp customer queries easily with AutoWaba — auto-assign chats to the right sales agent and let AI reply with the context you set about your business, courses, and more.",
     details: [
       "Train it on your business — upload your catalog, FAQs, or any document and the AI answers customer questions on WhatsApp automatically, in your tone",
       "Users connect their own Meta Business account and phone number",
@@ -74,22 +73,24 @@ export default function AppsPage() {
                     </p>
                   </div>
                   <div className="flex items-center gap-2">
-                    {app.free ? (
+                    {app.offer ? (
                       <span className="rounded-full bg-green-100 px-4 py-1.5 text-sm font-medium text-green-700">
-                        Free
+                        {app.offer}
                       </span>
                     ) : null}
-                    <span
-                      className={`rounded-full px-4 py-1.5 text-sm font-medium ${
-                        app.status === "Live"
-                          ? "bg-green-100 text-green-700"
-                          : app.status === "Beta"
-                            ? "bg-blue-100 text-blue-700"
-                            : "bg-amber-100 text-amber-700"
-                      }`}
-                    >
-                      {app.status}
-                    </span>
+                    {app.status ? (
+                      <span
+                        className={`rounded-full px-4 py-1.5 text-sm font-medium ${
+                          app.status === "Live"
+                            ? "bg-green-100 text-green-700"
+                            : app.status === "Beta"
+                              ? "bg-blue-100 text-blue-700"
+                              : "bg-amber-100 text-amber-700"
+                        }`}
+                      >
+                        {app.status}
+                      </span>
+                    ) : null}
                   </div>
                 </div>
                 <p className="mt-6 text-base text-neutral-600 max-w-2xl">

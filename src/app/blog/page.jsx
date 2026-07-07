@@ -1,11 +1,10 @@
-import Link from "next/link";
 import PageIntro from "@/components/PageIntro";
 import Container from "@/components/Container";
-import FadeIn, { FadeInStagger } from "@/components/FadeIn";
+import FadeIn from "@/components/FadeIn";
 import { GridList, GridListItem } from "@/components/GridList";
 import SectionIntro from "@/components/SectionIntro";
 import SubscribeForm from "@/components/SubscribeForm";
-import Border from "@/components/Border";
+import BlogPostList from "@/components/BlogPostList";
 import { getAllPosts } from "@/lib/posts";
 
 export const metadata = {
@@ -57,15 +56,17 @@ const topics = [
     description:
       "End-to-end breakdowns of problems I’ve solved — from the initial issue to the final solution, including what I tried that didn’t work.",
   },
+  {
+    title: "AutoWaba Tutorial",
+    description:
+      "Step-by-step walkthroughs for setting up and using AutoWaba — from connecting your WhatsApp number to configuring chatbots and campaigns.",
+  },
+  {
+    title: "AutoWaba Features",
+    description:
+      "A closer look at what AutoWaba can do — feature breakdowns, how they work, and how to get the most out of them.",
+  },
 ];
-
-function formatDate(value) {
-  return new Date(value).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
 
 export default async function BlogPage() {
   const posts = await getAllPosts();
@@ -82,46 +83,7 @@ export default async function BlogPage() {
 
       {posts.length > 0 ? (
         <Container className="mt-24 sm:mt-32 lg:mt-40">
-          <FadeInStagger className="space-y-24 lg:space-y-32">
-            {posts.map((post) => (
-              <FadeIn key={post.slug}>
-                <article>
-                  <Border className="pt-16">
-                    <div className="relative lg:-mx-4 lg:flex lg:justify-end">
-                      <div className="pt-10 lg:w-2/3 lg:flex-none lg:px-4 lg:pt-0">
-                        <h2 className="font-display text-2xl font-semibold text-neutral-950">
-                          <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                        </h2>
-                        <dl className="lg:absolute lg:left-0 lg:top-0 lg:w-1/3 lg:px-4">
-                          <dt className="sr-only">Published</dt>
-                          <dd className="absolute left-0 top-0 text-sm text-neutral-950 lg:static">
-                            <time dateTime={post.publishedDate}>
-                              {formatDate(post.publishedDate)}
-                            </time>
-                          </dd>
-                          <dt className="sr-only">Category</dt>
-                          <dd className="mt-6 hidden text-sm font-semibold text-neutral-950 lg:block">
-                            {post.categoryLabel}
-                          </dd>
-                        </dl>
-                        <p className="mt-6 max-w-2xl text-base text-neutral-600">
-                          {post.summary}
-                        </p>
-                        <Link
-                          href={`/blog/${post.slug}`}
-                          className="mt-8 inline-flex items-center gap-x-2 text-sm font-semibold text-neutral-950 transition hover:text-neutral-700"
-                          aria-label={`Read more: ${post.title}`}
-                        >
-                          Read more
-                          <span aria-hidden="true">→</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </Border>
-                </article>
-              </FadeIn>
-            ))}
-          </FadeInStagger>
+          <BlogPostList posts={posts} />
         </Container>
       ) : (
         <>

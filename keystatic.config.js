@@ -9,6 +9,8 @@ export const POST_CATEGORIES = [
   { label: "Tools & Stack", value: "tools-stack" },
   { label: "Business Automation", value: "business-automation" },
   { label: "Case Studies", value: "case-studies" },
+  { label: "AutoWaba Tutorial", value: "autowaba-tutorial" },
+  { label: "AutoWaba Features", value: "autowaba-features" },
 ];
 
 export default config({
