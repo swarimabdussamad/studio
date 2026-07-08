@@ -64,7 +64,10 @@ export default function BlogPostList({ posts }) {
       ) : null}
 
       {filteredPosts.length > 0 ? (
-        <FadeInStagger className="mt-16 space-y-24 lg:space-y-32">
+        <FadeInStagger
+          key={activeCategory}
+          className="mt-16 space-y-24 lg:space-y-32"
+        >
           {filteredPosts.map((post) => (
             <FadeIn key={post.slug}>
               <article>
