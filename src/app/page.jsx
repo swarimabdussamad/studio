@@ -42,10 +42,10 @@ const contentSections = [
       "Software I’ve built and shipped. Starting with AutoWaba, with more on the way.",
   },
   {
-    name: "Build Logs",
-    href: "/blog",
+    name: "Build Log",
+    href: "/build-log",
     description:
-      "Week-by-week progress on what I’m building — the decisions, the blockers, and what actually works.",
+      "The full development history of AutoWaba, grouped by release phase — the decisions, the blockers, and what actually shipped.",
   },
 ];
 

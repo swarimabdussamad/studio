@@ -1,3 +1,4 @@
+import Link from "next/link";
 import PageIntro from "@/components/PageIntro";
 import Container from "@/components/Container";
 import FadeIn from "@/components/FadeIn";
@@ -34,7 +35,7 @@ const topics = [
   {
     title: "Build Logs",
     description:
-      "Week-by-week progress on AutoWaba and other projects I’m working on. Raw, honest, and updated as things change.",
+      "Progress on AutoWaba and other projects I’m working on. Raw, honest, and updated as things change — the full grouped history lives on the build log page.",
   },
   {
     title: "WhatsApp & Meta Cloud API",
@@ -80,6 +81,31 @@ export default async function BlogPage() {
           If I haven’t experienced it, I won’t write about it.
         </p>
       </PageIntro>
+
+      <Container className="mt-16">
+        <FadeIn>
+          <Link
+            href="/build-log"
+            className="group flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-neutral-200 px-6 py-6 transition hover:border-neutral-950 sm:px-8"
+          >
+            <div>
+              <h2 className="font-display text-base font-semibold text-neutral-950">
+                Looking for the AutoWaba build log?
+              </h2>
+              <p className="mt-1 text-sm text-neutral-600">
+                The whole development history, grouped by release phase — not
+                scattered across posts.
+              </p>
+            </div>
+            <span
+              aria-hidden="true"
+              className="text-sm font-semibold text-neutral-950"
+            >
+              Open build log →
+            </span>
+          </Link>
+        </FadeIn>
+      </Container>
 
       {posts.length > 0 ? (
         <Container className="mt-24 sm:mt-32 lg:mt-40">

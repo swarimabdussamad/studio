@@ -16,6 +16,7 @@ const routes = [
   { path: "", changeFrequency: "weekly", priority: 1 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.9 },
   { path: "/apps", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/build-log", changeFrequency: "weekly", priority: 0.9 },
   {
     path: "/whatsapp-crm-qatar",
     changeFrequency: "monthly",

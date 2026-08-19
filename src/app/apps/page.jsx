@@ -25,6 +25,7 @@ const apps = [
     ],
     href: "https://autowaba.autotechify.com",
     cta: "Visit site",
+    buildLog: "/build-log",
     comingSoon: false,
   },
 ];
@@ -107,7 +108,7 @@ export default function AppsPage() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8">
+                <div className="mt-8 flex flex-wrap items-center gap-4">
                   {app.comingSoon ? (
                     <AutoWabaForm cta={app.cta} />
                   ) : (
@@ -122,6 +123,15 @@ export default function AppsPage() {
                       <span aria-hidden="true">→</span>
                     </Link>
                   )}
+                  {app.buildLog ? (
+                    <Link
+                      href={app.buildLog}
+                      className="inline-flex items-center gap-x-2 rounded-2xl border border-neutral-300 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:border-neutral-950"
+                    >
+                      Read the build log
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  ) : null}
                 </div>
               </div>
             </FadeIn>
