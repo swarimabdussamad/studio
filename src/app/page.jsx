@@ -104,7 +104,7 @@ export default function Home() {
       <Container className="mt-12 sm:mt-16">
         <FadeIn className="max-w-3xl">
           <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
-            Automation that saves time, reduces workload, and grows with your business.
+            Give it a try. See what AutoTechify can do for your business.
           </h1>
           <p className="mt-6 text-xl text-neutral-600">
             I build automation tools and systems for businesses — from small

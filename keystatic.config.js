@@ -4,7 +4,7 @@ import { config, fields, collection } from "@keystatic/core";
 export const POST_CATEGORIES = [
   { label: "IT Environment", value: "it-environment" },
   { label: "Automation", value: "automation" },
-  { label: "Build Logs", value: "build-logs" },
+  { label: "Product Updates", value: "build-logs" },
   { label: "WhatsApp & Meta Cloud API", value: "whatsapp-cloud-api" },
   { label: "Tools & Stack", value: "tools-stack" },
   { label: "Business Automation", value: "business-automation" },

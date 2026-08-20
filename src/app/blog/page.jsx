@@ -33,9 +33,9 @@ const topics = [
       "Scripts, workflows, and tools I’ve built to stop doing things manually. Mostly Python, bash, and whatever integrates with the systems I’m already running.",
   },
   {
-    title: "Build Logs",
+    title: "Product Updates",
     description:
-      "Progress on AutoWaba and other projects I’m working on. Raw, honest, and updated as things change — the full grouped history lives on the build log page.",
+      "News on AutoWaba and other projects I’m working on — new features, releases, and changes as they ship. The full grouped release history lives on the build log page.",
   },
   {
     title: "WhatsApp & Meta Cloud API",
