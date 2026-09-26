@@ -1,0 +1,79 @@
+---
+title: "AutoWaba tutorial: connect your existing WhatsApp Business app via Coexistence"
+publishedDate: 2026-09-26
+summary: >-
+  How WhatsApp Coexistence works — connect your existing WhatsApp Business app
+  number to AutoWaba so you can send high-volume messages via Cloud API while
+  still chatting normally in the app.
+category: autowaba-tutorial
+---
+
+WhatsApp Coexistence lets you connect your existing WhatsApp Business app number
+to AutoWaba — without giving up the app. After connecting, you can send
+high-volume campaigns and automated messages through AutoWaba, while still
+handling 1:1 conversations directly in the WhatsApp Business app. Both sides
+stay in sync.
+
+{% video src="/videos/autowaba-whatsapp-coexistence.mp4" %}{% /video %}
+
+## Before you start — does your number qualify?
+
+Meta only allows Coexistence if **all** of these are true:
+
+- Your WhatsApp Business app is version **2.24.17 or newer** — update from the app store first
+- The number has been **actively used in the WhatsApp Business app for at least 7 days** — new or barely-used numbers are refused
+- The number was **not recently moved** from another WhatsApp Business Account or provider — recently migrated numbers have a cooldown period
+- The number is on the **WhatsApp Business app**, not the regular WhatsApp app
+- The number is from a **country where Meta supports Coexistence** — check [Meta's Coexistence guide](https://www.facebook.com/business/help) if unsure
+
+## How the connection works
+
+When you go through the AutoWaba connection flow, you'll see an option to
+connect your existing WhatsApp Business app account instead of registering a
+fresh number. Here's what happens:
+
+1. Enter your WhatsApp Business app phone number
+2. WhatsApp sends a **verification code** to your WhatsApp Business app via the
+   official Facebook Business Account — tap **Connect** on that message
+3. Tap **Connect to the Business Platform**, then **Confirm**
+4. Paste the verification code back into the flow
+5. Done — your number is now connected to AutoWaba
+
+## What changes after connecting
+
+| Feature | After connecting |
+|---|---|
+| 1:1 chats | Work on both AutoWaba and the WA Business app — messages are mirrored |
+| Contacts | Fully synced |
+| Group chats | Stay on the WA Business app only — not available via AutoWaba |
+| Broadcast lists | Disabled — existing lists become read-only |
+| Disappearing & view-once messages | Turned off for all 1:1 chats |
+| Voice & video calls | No change — WA Business app only |
+| Business profile & catalog | No change — WA Business app only |
+
+## A few limitations to know
+
+**Throughput is capped at 20 messages per second** for numbers using Coexistence
+— lower than a standard Cloud API number. For most businesses this is plenty,
+but keep it in mind for very large campaign sends.
+
+Group chats are not supported on the Cloud API side. Everything sent and
+received in group chats stays in the WhatsApp Business app and won't appear in
+AutoWaba.
+
+## Pricing
+
+Messages you send from the **WhatsApp Business app** continue to be **free**.
+Messages sent via **AutoWaba (Cloud API)** are billed at standard WhatsApp
+Cloud API rates — the same pricing that applies to any other AutoWaba number.
+
+## How to disconnect
+
+If you ever need to disconnect, you do it from the **WhatsApp Business app**
+directly — not from AutoWaba. Go to **Settings → Account → Business Platform**
+and tap **Disconnect Account**. AutoWaba will be notified automatically.
+
+## Questions?
+
+If your number doesn't qualify yet or you run into anything during the flow,
+message me and I'll help you figure it out.

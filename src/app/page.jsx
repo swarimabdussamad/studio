@@ -85,21 +85,6 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Exclusive offer banner */}
-      <Container className="mt-6">
-        <FadeIn className="flex justify-center">
-          <Link
-            href="https://autowaba.autotechify.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="offer-badge offer-badge-shine relative overflow-hidden inline-flex items-center gap-x-2 rounded-full px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-purple-500/20 transition hover:scale-105 sm:text-base"
-          >
-            <span>Exclusive Offer — AutoWaba at $2 for 2 months</span>
-            <span aria-hidden="true">→</span>
-          </Link>
-        </FadeIn>
-      </Container>
-
       {/* Hero */}
       <Container className="mt-12 sm:mt-16">
         <FadeIn className="max-w-3xl">
