@@ -14,6 +14,13 @@ const currentBuilds = [
     href: "https://autowaba.autotechify.com",
   },
   {
+    name: "WA Sender",
+    offer: "Free in early access",
+    description:
+      "Send a WhatsApp campaign to the groups and contacts you already talk to — personalised, with attachments, scheduled if you want. It links your existing number by QR code, so there is no Meta business verification and no template approval to wait for. A REST API puts the same sending inside your own product.",
+    href: "https://wasender.autotechify.com",
+  },
+  {
     name: "Automation Scripts & Tools",
     status: "Labs",
     description:
@@ -39,7 +46,7 @@ const contentSections = [
     name: "Apps",
     href: "/apps",
     description:
-      "Software I’ve built and shipped. Starting with AutoWaba, with more on the way.",
+      "Software I’ve built and shipped — AutoWaba and WA Sender, with more on the way.",
   },
   {
     name: "Build Log",

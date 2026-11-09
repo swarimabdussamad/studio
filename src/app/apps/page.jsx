@@ -7,6 +7,41 @@ import ContactSection from "@/components/ContactSection";
 import AutoWabaForm from "@/components/AutoWabaForm";
 import Link from "next/link";
 
+// The product's own mark, drawn from the same 72-unit geometry as the icons
+// the live site ships (wa-group-sender/ui/public/icons/icon.svg) rather than
+// an exported image of them, so the two cannot drift apart. The translate
+// centres the artwork, which sits slightly right of and below the middle of
+// its canvas.
+function WaSenderMark() {
+  return (
+    <span
+      aria-hidden="true"
+      className="flex h-14 w-14 flex-none items-center justify-center rounded-2xl bg-[#0B141A]"
+    >
+      <svg viewBox="0 0 72 72" className="h-9 w-9">
+        <g transform="translate(-1.5 -1.5)">
+          <rect x="12" y="20" width="34" height="26" rx="8" fill="#22C55E" />
+          <polygon points="18,44 18,56 28,46" fill="#22C55E" />
+          <path
+            d="M53 26a14 14 0 0 1 0 20"
+            fill="none"
+            stroke="#22C55E"
+            strokeWidth="4"
+            strokeLinecap="round"
+          />
+          <path
+            d="M61 19a24 24 0 0 1 0 34"
+            fill="none"
+            stroke="#16A34A"
+            strokeWidth="4"
+            strokeLinecap="round"
+          />
+        </g>
+      </svg>
+    </span>
+  );
+}
+
 const apps = [
   {
     name: "AutoWaba",
@@ -26,6 +61,28 @@ const apps = [
     href: "https://autowaba.autotechify.com",
     cta: "Visit site",
     buildLog: "/build-log",
+    comingSoon: false,
+  },
+  {
+    name: "WA Sender",
+    tagline: "WhatsApp campaigns, without the Meta paperwork",
+    offer: "Free in early access",
+    status: "Early access",
+    description:
+      "Send one message — with images, PDFs or any file — to the WhatsApp groups and contacts you already talk to. No Meta Business verification, no template approval, no provider onboarding: link your own number by QR code and start sending in minutes. Rate limits, a warm-up ramp and a circuit breaker sit in front of every send to protect the number.",
+    details: [
+      "Links your existing WhatsApp number by QR — the same scan as WhatsApp Web",
+      "Personalises every message with the recipient's own name",
+      "Scheduled and recurring campaigns, run server-side with nothing left open",
+      "Safety gate: daily and hourly caps, minimum gaps, active hours, circuit breaker",
+      "Attachments travel with the message, and the message is the caption",
+      "Full REST API with per-key rate limits, so it drops into your own product",
+      "Live delivery progress, pause and resume between recipients",
+    ],
+    logo: WaSenderMark,
+    href: "https://wasender.autotechify.com",
+    cta: "Visit site",
+    docs: "https://wasender.autotechify.com/docs",
     comingSoon: false,
   },
 ];
@@ -65,13 +122,16 @@ export default function AppsPage() {
             <FadeIn key={app.name}>
               <div className="rounded-4xl border border-neutral-200 p-8 sm:p-12">
                 <div className="flex flex-wrap items-start justify-between gap-4">
-                  <div>
-                    <h2 className="font-display text-3xl font-semibold text-neutral-950">
-                      {app.name}
-                    </h2>
-                    <p className="mt-1 text-sm font-medium text-neutral-500">
-                      {app.tagline}
-                    </p>
+                  <div className="flex items-center gap-x-4">
+                    {app.logo ? <app.logo /> : null}
+                    <div>
+                      <h2 className="font-display text-3xl font-semibold text-neutral-950">
+                        {app.name}
+                      </h2>
+                      <p className="mt-1 text-sm font-medium text-neutral-500">
+                        {app.tagline}
+                      </p>
+                    </div>
                   </div>
                   <div className="flex items-center gap-2">
                     {app.offer ? (
@@ -129,6 +189,17 @@ export default function AppsPage() {
                       className="inline-flex items-center gap-x-2 rounded-2xl border border-neutral-300 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:border-neutral-950"
                     >
                       Read the build log
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  ) : null}
+                  {app.docs ? (
+                    <Link
+                      href={app.docs}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-x-2 rounded-2xl border border-neutral-300 px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:border-neutral-950"
+                    >
+                      Docs &amp; API
                       <span aria-hidden="true">→</span>
                     </Link>
                   ) : null}
