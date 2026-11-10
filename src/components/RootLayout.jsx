@@ -11,6 +11,7 @@ import SayHello from "./SayHello";
 import clsx from "clsx";
 import SocialMedia from "./SocialMedia";
 import Footer from "./Footer";
+import FloatingContact from "./FloatingContact";
 
 const Header = ({
   panelId,
@@ -184,6 +185,7 @@ const RootLayoutInner = ({ children }) => {
         >
           <main className="w-full flex-auto">{children}</main>
           <Footer />
+          <FloatingContact />
         </motion.div>
       </motion.div>
     </MotionConfig>
