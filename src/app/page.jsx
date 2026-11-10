@@ -8,9 +8,8 @@ import Link from "next/link";
 const currentBuilds = [
   {
     name: "AutoWaba",
-    offer: "$2 for 2 months",
     description:
-      "Manage your WhatsApp customer queries easily with AutoWaba — auto-assign chats to the right sales agent and let AI reply with the context you set about your business, courses, and more. Get started for just $2 for your first 2 months.",
+      "Manage your WhatsApp customer queries easily with AutoWaba — auto-assign chats to the right sales agent and let AI reply with the context you set about your business, courses, and more.",
     href: "https://autowaba.autotechify.com",
   },
   {

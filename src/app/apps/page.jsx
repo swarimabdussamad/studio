@@ -46,7 +46,6 @@ const apps = [
   {
     name: "AutoWaba",
     tagline: "WhatsApp Business Automation",
-    offer: "$2 for 2 months",
     description:
       "Manage your WhatsApp customer queries easily with AutoWaba — auto-assign chats to the right sales agent and let AI reply with the context you set about your business, courses, and more.",
     details: [
