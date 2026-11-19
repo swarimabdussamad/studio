@@ -36,6 +36,9 @@ const heroProducts = [
     href: "https://autowaba.autotechify.com",
     logo: "/email/autowaba.png",
     urlColor: "text-blue-400",
+    hoverRing: "hover:ring-blue-500/50 focus-visible:ring-blue-500",
+    logoShadow: "shadow-blue-600/40",
+    arrowHover: "group-hover:bg-blue-500",
   },
   {
     name: "WA Sender",
@@ -44,6 +47,9 @@ const heroProducts = [
     href: "https://wasender.autotechify.com",
     logo: "/email/wasender.png",
     urlColor: "text-green-400",
+    hoverRing: "hover:ring-green-500/50 focus-visible:ring-green-500",
+    logoShadow: "shadow-green-600/30",
+    arrowHover: "group-hover:bg-green-500 group-hover:text-neutral-950",
     badge: "Free early access",
   },
 ];
@@ -113,8 +119,8 @@ export default function Home() {
 
       {/* Hero */}
       <Container className="mt-12 sm:mt-16">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
-        <FadeIn className="max-w-3xl lg:col-span-7">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-12">
+        <FadeIn className="max-w-3xl lg:col-span-6">
           <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
             Give it a try. See what AutoTechify can do for your business.
           </h1>
@@ -139,54 +145,94 @@ export default function Home() {
           </div>
         </FadeIn>
 
-        <FadeIn className="lg:col-span-5">
-          <div className="rounded-4xl bg-neutral-950 p-6 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
-              Our products
-            </p>
-            <div className="mt-6 space-y-4">
+        <FadeIn className="lg:col-span-6">
+          <div className="relative isolate overflow-hidden rounded-[2.5rem] bg-neutral-950 p-6 shadow-2xl shadow-neutral-950/30 ring-1 ring-white/10 sm:p-10">
+            {/* Ambient glows in each product's colour, plus a faint dot grid */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-24 -top-24 -z-10 h-72 w-72 rounded-full bg-blue-600/30 blur-3xl"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-28 -right-20 -z-10 h-72 w-72 rounded-full bg-green-500/20 blur-3xl"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 -z-10 opacity-[0.15] [background-image:radial-gradient(rgba(255,255,255,0.35)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_bottom,black,transparent)]"
+            />
+
+            <div className="flex items-center justify-between gap-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
+                Our products
+              </p>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-neutral-300 ring-1 ring-white/10">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75 motion-reduce:hidden" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+                </span>
+                Live now
+              </span>
+            </div>
+            <h2 className="mt-5 font-display text-3xl font-medium tracking-tight text-white sm:text-4xl">
+              Tools you can use today.
+            </h2>
+
+            <div className="mt-8 space-y-4">
               {heroProducts.map((product) => (
                 <a
                   key={product.name}
                   href={product.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-x-4 rounded-3xl border border-neutral-800 p-4 transition hover:border-neutral-600 hover:bg-neutral-900"
+                  className={`group relative flex items-center gap-x-5 rounded-3xl bg-white/[0.04] p-5 ring-1 ring-white/10 backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:bg-white/[0.07] focus-visible:outline-none focus-visible:ring-2 sm:p-6 ${product.hoverRing}`}
                 >
                   <img
                     src={product.logo}
                     alt=""
-                    width={56}
-                    height={56}
-                    className="h-14 w-14 flex-none rounded-2xl"
+                    width={72}
+                    height={72}
+                    className={`h-16 w-16 flex-none rounded-2xl shadow-lg ring-1 ring-white/10 transition duration-300 group-hover:scale-105 sm:h-[72px] sm:w-[72px] ${product.logoShadow}`}
                   />
                   <div className="min-w-0 flex-auto">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h2 className="font-display text-lg font-semibold text-white">
+                    <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                      <h3 className="font-display text-xl font-semibold text-white sm:text-2xl">
                         {product.name}
-                      </h2>
+                      </h3>
                       {product.badge ? (
-                        <span className="rounded-full bg-green-500/15 px-2.5 py-0.5 text-[11px] font-medium text-green-400">
+                        <span className="rounded-full bg-green-500/15 px-2.5 py-0.5 text-[11px] font-semibold text-green-400 ring-1 ring-inset ring-green-500/30">
                           {product.badge}
                         </span>
                       ) : null}
                     </div>
-                    <p className="mt-0.5 text-sm text-neutral-400">
+                    <p className="mt-1 text-sm leading-6 text-neutral-400 sm:text-[15px]">
                       {product.tagline}
                     </p>
-                    <p className={`mt-1 truncate text-xs font-medium ${product.urlColor}`}>
+                    <p className={`mt-1.5 truncate text-xs font-semibold sm:text-sm ${product.urlColor}`}>
                       {product.host}
                     </p>
                   </div>
                   <span
                     aria-hidden="true"
-                    className="flex-none text-white transition-transform duration-300 group-hover:translate-x-1"
+                    className={`hidden h-11 w-11 flex-none items-center justify-center rounded-full bg-white/10 text-lg text-white transition duration-300 group-hover:translate-x-1 sm:flex ${product.arrowHover}`}
                   >
                     →
                   </span>
                 </a>
               ))}
             </div>
+
+            <Link
+              href="/apps"
+              className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 transition hover:text-white"
+            >
+              See all apps and what’s coming next
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </Link>
           </div>
         </FadeIn>
         </div>
