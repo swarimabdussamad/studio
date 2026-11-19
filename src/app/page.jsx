@@ -28,6 +28,26 @@ const currentBuilds = [
   },
 ];
 
+const heroProducts = [
+  {
+    name: "AutoWaba",
+    tagline: "WhatsApp Business automation with AI replies",
+    host: "autowaba.autotechify.com",
+    href: "https://autowaba.autotechify.com",
+    logo: "/email/autowaba.png",
+    urlColor: "text-blue-400",
+  },
+  {
+    name: "WA Sender",
+    tagline: "WhatsApp campaigns to your groups & contacts",
+    host: "wasender.autotechify.com",
+    href: "https://wasender.autotechify.com",
+    logo: "/email/wasender.png",
+    urlColor: "text-green-400",
+    badge: "Free early access",
+  },
+];
+
 const contentSections = [
   {
     name: "Blog",
@@ -93,7 +113,8 @@ export default function Home() {
 
       {/* Hero */}
       <Container className="mt-12 sm:mt-16">
-        <FadeIn className="max-w-3xl">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+        <FadeIn className="max-w-3xl lg:col-span-7">
           <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
             Give it a try. See what AutoTechify can do for your business.
           </h1>
@@ -117,6 +138,58 @@ export default function Home() {
             </Link>
           </div>
         </FadeIn>
+
+        <FadeIn className="lg:col-span-5">
+          <div className="rounded-4xl bg-neutral-950 p-6 sm:p-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
+              Our products
+            </p>
+            <div className="mt-6 space-y-4">
+              {heroProducts.map((product) => (
+                <a
+                  key={product.name}
+                  href={product.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-x-4 rounded-3xl border border-neutral-800 p-4 transition hover:border-neutral-600 hover:bg-neutral-900"
+                >
+                  <img
+                    src={product.logo}
+                    alt=""
+                    width={56}
+                    height={56}
+                    className="h-14 w-14 flex-none rounded-2xl"
+                  />
+                  <div className="min-w-0 flex-auto">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h2 className="font-display text-lg font-semibold text-white">
+                        {product.name}
+                      </h2>
+                      {product.badge ? (
+                        <span className="rounded-full bg-green-500/15 px-2.5 py-0.5 text-[11px] font-medium text-green-400">
+                          {product.badge}
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="mt-0.5 text-sm text-neutral-400">
+                      {product.tagline}
+                    </p>
+                    <p className={`mt-1 truncate text-xs font-medium ${product.urlColor}`}>
+                      {product.host}
+                    </p>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    className="flex-none text-white transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </FadeIn>
+        </div>
       </Container>
 
       {/* Currently Building */}
